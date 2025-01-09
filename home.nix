@@ -18,7 +18,13 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    gnome-tweaks
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.caffeine
+    gnomeExtensions.clipboard-indicator
+    gnomeExtensions.hot-edge
+    gnomeExtensions.just-perfection
+    gnomeExtensions.rounded-window-corners-reborn
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -69,9 +75,18 @@
   #  /etc/profiles/per-user/alpha/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+    userName = "paaradiso";
+    userEmail = "paaradiso@swag.horse";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+  };
 }

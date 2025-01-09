@@ -77,15 +77,15 @@
     home = "/home/alpha";
     createHome = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      tree
-    ];
+    packages = with pkgs; [];
   };
 
   # programs.firefox.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    tree
+    gnome-tweaks
     wget
     htop
     ncdu
