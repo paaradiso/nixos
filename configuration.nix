@@ -81,6 +81,8 @@
   };
 
   # programs.firefox.enable = true;
+  
+  nixpkgs.config.allowUnfree = true; 
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -90,8 +92,17 @@
     htop
     ncdu
     git
+    lazygit
     zed-editor
     bitwarden
+    zsh
+    zoxide
+    bat
+    eza
+    jellyfin-media-player
+    vesktop
+    feishin
+    spotify
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
