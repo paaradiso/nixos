@@ -82,31 +82,40 @@
     EDITOR = "vim";
   };
 
-dconf = {
-  enable = true;
-  settings = {
-    "org/gnome/shell" = {
-      disable-user-extensions = false;
-      # `gnome-extensions list` for a list of installed extensions
-      enabled-extensions = [
-        "blur-my-shell@aunetx"
-        "caffeine@patapon.info"
-        "clipboard-indicator@tudmotu.com"
-        "hotedge@jonathan.jdoda.ca"
-        "just-perfection-desktop@just-perfection"
-        "rounded-window-corners-reborn@fxgn"
-      ];
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/shell" = {
+        disable-user-extensions = false;
+        # `gnome-extensions list` for a list of installed extensions
+        enabled-extensions = [
+          "blur-my-shell@aunetx"
+          "caffeine@patapon.info"
+          "clipboard-indicator@tudmotu.com"
+          "hotedge@jonathan.jdoda.ca"
+          "just-perfection-desktop@just-perfection"
+          "rounded-window-corners-reborn@fxgn"
+        ];
+      };
     };
   };
-};
 
 
-  programs.git = {
-    enable = true;
-    userName = "paaradiso";
-    userEmail = "paaradiso@swag.horse";
-    extraConfig = {
-      init.defaultBranch = "main";
+  programs = {
+    git = {
+      enable = true;
+      userName = "paaradiso";
+      userEmail = "paaradiso@swag.horse";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
+    };
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      shellAliases = {
+        ls = "eza -la";
+      };
     };
   };
 }

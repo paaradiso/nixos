@@ -79,6 +79,7 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [];
   };
+  users.defaultUserShell = pkgs.zsh;
 
   # programs.firefox.enable = true;
   
