@@ -1,6 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "alpha";
@@ -78,8 +82,24 @@
     EDITOR = "vim";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+dconf = {
+  enable = true;
+  settings = {
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+      # `gnome-extensions list` for a list of installed extensions
+      enabled-extensions = [
+        "blur-my-shell@aunetx"
+        "caffeine@patapon.info"
+        "clipboard-indicator@tudmotu.com"
+        "hotedge@jonathan.jdoda.ca"
+        "just-perfection-desktop@just-perfection"
+        "rounded-window-corners-reborn@fxgn"
+      ];
+    };
+  };
+};
+
 
   programs.git = {
     enable = true;
