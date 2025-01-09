@@ -11,6 +11,8 @@
       <home-manager/nixos>
     ];
 
+  nix.settings.experimental-features = [ "flakes" ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -105,6 +107,9 @@
     spotify
     iosevka-comfy.comfy-motion-fixed
     phinger-cursors
+    # Zen Browser
+    (builtins.getFlake "github:MarceColl/zen-browser-flake").packages."${system}".default
+
   ];
 
   programs.zsh.enable = true;
@@ -120,7 +125,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

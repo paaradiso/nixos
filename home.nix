@@ -97,9 +97,19 @@
           "rounded-window-corners-reborn@fxgn"
         ];
       };
+      "org/gnome/shell/extensions/just-perfection" = {
+        keyboard-layout = false;
+        quick-settings-dark-mode = false;
+        screen-sharing-indicator = false;
+        window-demands-attention-focus = true;
+        switcher-popup-delay = false;
+      };
       "org/gnome/desktop/interface" = {
 	monospace-font-name = "Iosevka Comfy Motion Fixed 11";
         cursor-theme = "phinger-cursors-dark";
+      };
+      "org/gnome/desktop/peripherals/touchpad" = {
+        natural-scroll = false;
       };
     };
   };
