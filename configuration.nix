@@ -13,6 +13,24 @@
 
   nix.settings.experimental-features = [ "flakes" ];
 
+  boot.initrd.luks.devices = {
+    cryptkey = {
+      device = "/dev/disk/by-uuid/c86fe0e7-8cff-4433-9895-722f4d96f59e";
+    };
+    cryptswap = {
+      device = "/dev/disk/by-uuid/22553d23-f6b2-4fc6-a867-150e309bf93d";
+      keyFileSize = 8192;
+      keyFile = "/dev/mapper/cryptkey";
+    };
+    cryptroot = {
+      device = "/dev/disk/by-uuid/f2bb6ab7-1c39-4dfe-b687-6852d7940c6e";
+      keyFileSize = 8192;
+      keyFile = "/dev/mapper/cryptkey";
+      allowDiscards = true;
+    };
+  };
+
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

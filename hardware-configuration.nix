@@ -8,36 +8,14 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.initrd.luks.devices = {
-    cryptkey = {
-      device = "/dev/nvme0n1p2";
-    };
-    cryptswap = {
-      device = "/dev/nvme0n1p3";
-      keyFileSize = 8192;
-      keyFile = "/dev/mapper/cryptkey";
-    };
-    cryptroot = {
-      device = "/dev/nvme0n1p4";
-      keyFileSize = 8192;
-      keyFile = "/dev/mapper/cryptkey";
-      allowDiscards = true;
-    };
-  };
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     { device = "pool/system/root";
       fsType = "zfs";
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/D79D-94AB";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   fileSystems."/nix" =
@@ -55,7 +33,15 @@
       fsType = "zfs";
     };
 
-  swapDevices = [ { device = "/dev/mapper/cryptswap"; } ];
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/D79D-94AB";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/8309b09b-42a5-4689-bbfb-73cfe6d7b737"; }
+    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
