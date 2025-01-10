@@ -109,6 +109,7 @@
     phinger-cursors
     # Zen Browser
     (builtins.getFlake "github:MarceColl/zen-browser-flake").packages."${system}".default
+    obsidian
 
   ];
 

@@ -107,6 +107,7 @@
       "org/gnome/desktop/interface" = {
 	monospace-font-name = "Iosevka Comfy Motion Fixed 11";
         cursor-theme = "phinger-cursors-dark";
+        show-battery-percentage = true;
       };
       "org/gnome/desktop/peripherals/touchpad" = {
         natural-scroll = false;
