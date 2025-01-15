@@ -8,9 +8,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      config/flatpak.nix
     ];
 
-  nix.settings.experimental-features = [ "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   boot.initrd.luks.devices = {
     cryptkey = {
@@ -41,7 +42,7 @@
 
   # Set your time zone.
   time.timeZone = "Australia/Adelaide";
-
+  
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -69,6 +70,13 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config.common.default = "gtk";
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
   
 
   # Configure keymap in X11
@@ -121,7 +129,6 @@
     jellyfin-media-player
     vesktop
     feishin
-    spotify
     iosevka-comfy.comfy-motion-fixed
     phinger-cursors
     # Zen Browser
@@ -129,6 +136,8 @@
     obsidian
 
   ];
+
+  services.flatpak.enable = true;
 
   programs.zsh.enable = true;
 
