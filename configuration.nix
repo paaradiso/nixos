@@ -131,7 +131,7 @@
     feishin
     iosevka-comfy.comfy-motion-fixed
     phinger-cursors
-    inputs.zen-browser.packages."$system}".default
+    inputs.zen-browser.packages."${system}".default
     obsidian
 
   ];
