@@ -12,6 +12,7 @@
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.optimise.automatic = true;
 
   boot.initrd.luks.devices = {
     cryptkey = {
