@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../config/flatpak.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -136,7 +135,13 @@
 
   ];
 
-  services.flatpak.enable = true;
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "com.spotify.Client"
+      "org.quassel_irc.QuasselClient"
+    ];
+  };
 
   programs.zsh.enable = true;
 
