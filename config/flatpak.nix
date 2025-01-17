@@ -3,7 +3,7 @@
 let
   grep = pkgs.gnugrep;
   desiredFlatpaks = [ 
-    "com.spotify.Client"
+    # "com.spotify.Client"
   ];
 in
 {
@@ -16,7 +16,7 @@ in
 
       for installed in $installedFlatpaks; do
         if ! echo ${toString desiredFlatpaks} | ${grep}/bin/grep -q $installed; then
-          echo "Removing $installed because it is no in the desiredFlatpaks list."
+          echo "Removing $installed because it is not in the desiredFlatpaks list."
           ${pkgs.flatpak}/bin/flatpak uninstall -y --noninteractive $installed
         fi
       done
