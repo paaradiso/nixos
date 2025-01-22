@@ -144,6 +144,18 @@
     ];
   };
 
+
+  stylix = {
+    enable = true;
+    polarity = "dark";
+    image = ../assets/161616.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/theme/oxocarbon-dark.yaml";
+    # targets = {
+    #   gnome.enable = true;
+    #   gnome-text-editor.enable = true;
+    # };
+  };
+
   programs.zsh.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are

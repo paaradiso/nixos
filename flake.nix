@@ -6,15 +6,17 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix.url = "github:danth/stylix/release-24.11";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
-  outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, ... }: {
     nixosConfigurations.utopia = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
         nix-flatpak.nixosModules.nix-flatpak
+        stylix.nixosModules.stylix 
         nixos/configuration.nix
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
