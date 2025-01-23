@@ -35,6 +35,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # boot.plymouth = {
+  #   enable = true;
+  # };
+
   networking.hostName = "utopia"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -129,8 +133,6 @@
     jellyfin-media-player
     vesktop
     feishin
-    iosevka-comfy.comfy-motion-fixed
-    phinger-cursors
     inputs.zen-browser.packages."${system}".default
     obsidian
 
@@ -148,12 +150,28 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ../assets/161616.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/theme/oxocarbon-dark.yaml";
-    # targets = {
-    #   gnome.enable = true;
-    #   gnome-text-editor.enable = true;
-    # };
+    image = ../../assets/161616.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
+    targets = {
+      # gnome.enable = false;
+    };
+    cursor = {
+      package = pkgs.phinger-cursors;
+      name = "phinger-cursors-dark";
+    };
+    fonts = {
+      monospace = {
+        package = pkgs.iosevka-comfy.comfy-motion-fixed;
+        name = "Iosevka Comfy Motion Fixed";
+      };
+      sansSerif = {
+        package = pkgs.cantarell-fonts;
+        name = "Cantarell";
+      };
+      sizes = {
+        terminal = 10;
+      };
+    };
   };
 
   programs.zsh.enable = true;

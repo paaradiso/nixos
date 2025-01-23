@@ -105,8 +105,8 @@
         switcher-popup-delay = false;
       };
       "org/gnome/desktop/interface" = {
-	monospace-font-name = "Iosevka Comfy Motion Fixed 11";
-        cursor-theme = "phinger-cursors-dark";
+	# monospace-font-name = "Iosevka Comfy Motion Fixed 11";
+        # cursor-theme = "phinger-cursors-dark";
         show-battery-percentage = true;
       };
       "org/gnome/desktop/peripherals/touchpad" = {

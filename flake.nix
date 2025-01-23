@@ -10,14 +10,14 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
-  outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, ... }: {
-    nixosConfigurations.utopia = nixpkgs.lib.nixosSystem {
+  outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, ... }: let
+    mkNixosSystem = host: nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
+        (./hosts + "/${host}/configuration.nix")
         nix-flatpak.nixosModules.nix-flatpak
         stylix.nixosModules.stylix 
-        nixos/configuration.nix
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -25,5 +25,7 @@
         }
       ];
     };
+  in {
+    nixosConfigurations.utopia = mkNixosSystem "utopia";
   };
 }
