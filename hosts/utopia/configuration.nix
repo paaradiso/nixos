@@ -76,6 +76,18 @@
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-console
+    gnome-tour
+    gnome-text-editor
+    gnome-music
+    totem # videos
+    cheese # webcam
+    epiphany # browser
+    geary # email
+    gnome-characters
+  ]);
+
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
@@ -133,10 +145,9 @@
     eza
     jellyfin-media-player
     vesktop
-    feishin
     inputs.zen-browser.packages."${system}".default
-    obsidian
-
+    helix
+    ghostty
   ];
 
   services.flatpak = {
