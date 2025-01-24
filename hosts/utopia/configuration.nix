@@ -35,9 +35,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # boot.plymouth = {
-  #   enable = true;
-  # };
+  boot.initrd.systemd.enable = true; # Required for plymouth to show password prompt for LUKS
+  boot.plymouth = {
+    enable = true;
+  };
 
   networking.hostName = "utopia"; # Define your hostname.
   # Pick only one of the below networking options.

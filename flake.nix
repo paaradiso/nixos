@@ -21,7 +21,7 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.alpha = import home/alpha.nix;
+          home-manager.users.alpha = import home/alpha/home.nix;
         }
       ];
     };

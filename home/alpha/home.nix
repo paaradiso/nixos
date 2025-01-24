@@ -50,6 +50,10 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    ".local/share/gnome-shell/extensions/no-switcher-delay@illegal.charity" = {
+      source = (./files + "/no-switcher-delay@illegal.charity");
+      recursive = true;
+    };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -93,19 +97,19 @@
           "caffeine@patapon.info"
           "clipboard-indicator@tudmotu.com"
           "hotedge@jonathan.jdoda.ca"
-          "just-perfection-desktop@just-perfection"
+        #  "just-perfection-desktop@just-perfection"
           "rounded-window-corners-reborn@fxgn"
         ];
       };
-      "org/gnome/shell/extensions/just-perfection" = {
-        keyboard-layout = false;
-        quick-settings-dark-mode = false;
-        screen-sharing-indicator = false;
-        window-demands-attention-focus = true;
-        switcher-popup-delay = false;
-      };
+      # "org/gnome/shell/extensions/just-perfection" = {
+      #   keyboard-layout = false;
+      #   quick-settings-dark-mode = false;
+      #   screen-sharing-indicator = false;
+      #   window-demands-attention-focus = true;
+      #   switcher-popup-delay = false;
+      # };
       "org/gnome/desktop/interface" = {
-	# monospace-font-name = "Iosevka Comfy Motion Fixed 11";
+        # monospace-font-name = "Iosevka Comfy Motion Fixed 11";
         # cursor-theme = "phinger-cursors-dark";
         show-battery-percentage = true;
       };
