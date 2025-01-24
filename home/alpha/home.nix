@@ -98,7 +98,8 @@
           "clipboard-indicator@tudmotu.com"
           "hotedge@jonathan.jdoda.ca"
         #  "just-perfection-desktop@just-perfection"
-          "rounded-window-corners-reborn@fxgn"
+          "no-switcher-delay@illegal.charity"
+          "rounded-window-corners@fxgn"
         ];
       };
       # "org/gnome/shell/extensions/just-perfection" = {
