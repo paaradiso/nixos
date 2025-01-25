@@ -39,7 +39,10 @@
   boot.plymouth = {
     enable = true;
   };
-
+  boot.consoleLogLevel = 0;
+  boot.kernelParams = [ "quiet" "splash" "boot.shell_on_fail" "loglevel=3" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" ];
+  boot.loader.timeout = 0;
+  
   networking.hostName = "utopia"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
