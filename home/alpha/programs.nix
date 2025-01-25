@@ -35,5 +35,6 @@
     };
     helix.enable = true;
     ghostty.enable = true;
+    bat.enable = true;
   };
 }
