@@ -34,5 +34,6 @@
       enableZshIntegration = true;
     };
     helix.enable = true;
+    ghostty.enable = true;
   };
 }
