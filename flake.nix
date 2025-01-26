@@ -6,16 +6,18 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     stylix.url = "github:danth/stylix/release-24.11";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
-  outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, ... }: let
+  outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, nixos-hardware, ... }: let
     mkNixosSystem = host: nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
         (./hosts + "/${host}/configuration.nix")
+        nixos-hardware.nixosModules.dell-xps-13-9360
         nix-flatpak.nixosModules.nix-flatpak
         stylix.nixosModules.stylix 
         home-manager.nixosModules.home-manager {
