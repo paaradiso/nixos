@@ -12,8 +12,13 @@
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
   outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, nixos-hardware, ... }: let
-    mkNixosSystem = { host, extraModules ? [] }: nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+    mkNixosSystem = { 
+      host, 
+      users ? [ "alpha" ],
+      system ? "x86_64-linux",
+      extraModules ? [] 
+    }: nixpkgs.lib.nixosSystem {
+      inherit system;
       specialArgs = { inherit inputs; };
       modules = [
         (./hosts + "/${host}/configuration.nix")
@@ -22,7 +27,10 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.alpha = import home/alpha/home.nix;
+          home-manager.users = nixpkgs.lib.listToAttrs (map (user: {
+            name = user;
+            value = import (./home + "/${user}/home.nix");
+          }) users);
         }
       ] ++ extraModules;
     };
