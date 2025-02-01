@@ -17,7 +17,6 @@
       specialArgs = { inherit inputs; };
       modules = [
         (./hosts + "/${host}/configuration.nix")
-        nixos-hardware.nixosModules.dell-xps-13-9360
         nix-flatpak.nixosModules.nix-flatpak
         stylix.nixosModules.stylix 
         home-manager.nixosModules.home-manager {
@@ -28,6 +27,7 @@
       ];
     };
   in {
-    nixosConfigurations.utopia = mkNixosSystem "utopia";
+    nixosConfigurations.utopia    = mkNixosSystem "utopia";
+    nixosConfigurations.phosphene = mkNixosSystem "phosphene";
   };
 }
