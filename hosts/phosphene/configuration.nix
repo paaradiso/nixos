@@ -43,7 +43,7 @@
   boot.kernelParams = [ "quiet" "splash" "boot.shell_on_fail" "loglevel=3" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" ];
   boot.loader.timeout = 0;
   
-  networking.hostName = "utopia"; # Define your hostname.
+  networking.hostName = "phosphene"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -123,9 +123,8 @@
     home = "/home/alpha";
     createHome = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
-  users.defaultUserShell = pkgs.zsh;
 
   # programs.firefox.enable = true;
   
@@ -210,7 +209,7 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  networking.hostId = "3ae53d5e";
+  networking.hostId = "daabd397";
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

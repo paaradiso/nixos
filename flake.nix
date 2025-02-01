@@ -12,7 +12,7 @@
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
   outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, nixos-hardware, ... }: let
-    mkNixosSystem = host: nixpkgs.lib.nixosSystem {
+    mkNixosSystem = { host, extraModules ? [] }: nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
@@ -24,10 +24,10 @@
           home-manager.useUserPackages = true;
           home-manager.users.alpha = import home/alpha/home.nix;
         }
-      ];
+      ] ++ extraModules;
     };
   in {
-    nixosConfigurations.utopia    = mkNixosSystem "utopia";
-    nixosConfigurations.phosphene = mkNixosSystem "phosphene";
+    nixosConfigurations.utopia    = mkNixosSystem { host = "utopia";    extraModules = [ nixos-hardware.nixosModules.dell-xps-13-9360 ]; };
+    nixosConfigurations.phosphene = mkNixosSystem { host = "phosphene"; extraModules = [ nixos-hardware.nixosModules.lenovo-thinkpad-t490s ]; };
   };
 }

@@ -17,6 +17,12 @@
           "rounded-window-corners@fxgn"
           "pop-shell@system76.com"
         ];
+        favorite-apps = [
+          "com.mitchellh.ghostty.desktop"
+          "org.gnome.Nautilus.desktop"
+          "zen.desktop"
+          "com.spotify.Client.desktop"
+        ];
       };
       # "org/gnome/shell/extensions/just-perfection" = {
       #   keyboard-layout = false;
@@ -26,10 +32,10 @@
       #   switcher-popup-delay = false;
       # };
       "org/gnome/shell/pop-shell" = {
-        "tile-by-default" = true;       
+        tile-by-default = true;       
       };
       "org/gnome/mutter" = {
-        "edge-tiling" = false; # required for pop-shell/tile-by-default
+        edge-tiling = false; # required for pop-shell/tile-by-default
       };
       "org/gnome/desktop/interface" = {
         # monospace-font-name = "Iosevka Comfy Motion Fixed 11";
