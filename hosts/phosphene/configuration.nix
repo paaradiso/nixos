@@ -179,8 +179,8 @@
         name = "Iosevka Comfy Motion Fixed";
       };
       sansSerif = {
-        package = pkgs.cantarell-fonts;
-        name = "Cantarell";
+        package = pkgs.inter;
+        name = "Inter";
       };
       sizes = {
         terminal = 12;
