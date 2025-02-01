@@ -28,6 +28,9 @@
       "org/gnome/shell/pop-shell" = {
         "tile-by-default" = true;       
       };
+      "org/gnome/mutter" = {
+        "edge-tiling" = false; # required for pop-shell/tile-by-default
+      };
       "org/gnome/desktop/interface" = {
         # monospace-font-name = "Iosevka Comfy Motion Fixed 11";
         # cursor-theme = "phinger-cursors-dark";
