@@ -184,7 +184,7 @@
         name = "Cantarell";
       };
       sizes = {
-        terminal = 10;
+        terminal = 12;
       };
     };
   };

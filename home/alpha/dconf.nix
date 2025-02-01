@@ -15,6 +15,7 @@
         #  "just-perfection-desktop@just-perfection"
           "no-switcher-delay@illegal.charity"
           "rounded-window-corners@fxgn"
+          "pop-shell@system76.com"
         ];
       };
       # "org/gnome/shell/extensions/just-perfection" = {
@@ -24,6 +25,9 @@
       #   window-demands-attention-focus = true;
       #   switcher-popup-delay = false;
       # };
+      "org/gnome/shell/pop-shell" = {
+        "tile-by-default" = true;       
+      };
       "org/gnome/desktop/interface" = {
         # monospace-font-name = "Iosevka Comfy Motion Fixed 11";
         # cursor-theme = "phinger-cursors-dark";

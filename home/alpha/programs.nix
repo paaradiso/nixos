@@ -20,6 +20,7 @@
       shellAliases = {
         ls = "eza -la";
         cd = "z";
+        rb = "sudo nixos-rebuild switch";
       };
       initExtra = ''
         autoload -Uz vcs_info
@@ -34,7 +35,14 @@
       enableZshIntegration = true;
     };
     helix.enable = true;
-    ghostty.enable = true;
+    ghostty = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        window-padding-x = 12;
+        window-padding-y = 12;
+      };
+    };
     bat.enable = true;
   };
 }
