@@ -37,5 +37,6 @@
   in {
     nixosConfigurations.utopia    = mkNixosSystem { host = "utopia";    extraModules = [ nixos-hardware.nixosModules.dell-xps-13-9360 ]; };
     nixosConfigurations.phosphene = mkNixosSystem { host = "phosphene"; extraModules = [ nixos-hardware.nixosModules.lenovo-thinkpad-t490s ]; };
+    nixosConfigurations.dearth    = mkNixosSystem { host = "dearth"; };
   };
 }
