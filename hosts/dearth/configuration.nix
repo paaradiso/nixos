@@ -75,8 +75,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.xkb.options = "ctrl:nocaps";
-
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -150,10 +148,10 @@
     bat
     eza
     jellyfin-media-player
-    vesktop
     inputs.zen-browser.packages."${system}".default
     helix
     ghostty
+    xmousepasteblock
   ];
 
   services.flatpak = {
@@ -191,6 +189,20 @@
       };
     };
   };
+
+  systemd.user.services.xmousepasteblock = {
+    enable = true;
+    wantedBy = [ "graphical-session.target" ];
+    description = "XmousePasteBlock - Userspace tool to disable middle mouse button paste in Xorg";
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = ''${pkgs.xmousepasteblock}/bin/xmousepasteblock'';
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+  };
+  
 
   programs.zsh.enable = true;
 

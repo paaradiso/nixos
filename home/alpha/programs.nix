@@ -44,5 +44,8 @@
       };
     };
     bat.enable = true;
+    nixcord = {
+      enable = true;
+    };
   };
 }

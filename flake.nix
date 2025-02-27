@@ -10,6 +10,7 @@
     stylix.url = "github:danth/stylix/release-24.11";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+    nixcord.url = "github:kaylorben/nixcord";
   };
   outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, nixos-hardware, ... }: let
     mkNixosSystem = { 
@@ -31,6 +32,9 @@
             name = user;
             value = import (./home + "/${user}/home.nix");
           }) users);
+          home-manager.sharedModules = [
+            inputs.nixcord.homeManagerModules.nixcord
+          ];
         }
       ] ++ extraModules;
     };

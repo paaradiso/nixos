@@ -16,6 +16,7 @@
           "no-switcher-delay@illegal.charity"
           "rounded-window-corners@fxgn"
           "pop-shell@system76.com"
+          "status-icons@gnome-shell-extensions.gcampax.github.com"
         ];
         favorite-apps = [
           "com.mitchellh.ghostty.desktop"
@@ -41,9 +42,20 @@
         # monospace-font-name = "Iosevka Comfy Motion Fixed 11";
         # cursor-theme = "phinger-cursors-dark";
         show-battery-percentage = true;
+	enable-animations = false;
+      };
+      "org/gnome/desktop/wm/keybindings" = {
+        switch-windows = ["<Alt>Tab"];
+        switch-windows-backward = ["<Shift><Alt>Tab"];
+        switch-applications = [];
+        switch-applications-backward = [];
+	toggle-fullscreen = ["<Super>f"];
       };
       "org/gnome/desktop/peripherals/touchpad" = {
         natural-scroll = false;
+      };
+      "org/gnome/desktop/peripherals/mouse" = {
+        accel-profile = "flat";
       };
     };
   };
