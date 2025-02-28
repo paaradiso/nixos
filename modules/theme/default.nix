@@ -23,7 +23,7 @@
         name = "Inter";
       };
       sizes = {
-        terminal = 12;
+        terminal = 11;
       };
     };
   };
