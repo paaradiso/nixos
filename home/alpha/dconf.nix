@@ -17,6 +17,7 @@
           "rounded-window-corners@fxgn"
           # "pop-shell@system76.com"
           "status-icons@gnome-shell-extensions.gcampax.github.com"
+          "grand-theft-focus@zalckos.github.com"
         ];
         favorite-apps = [
           "com.mitchellh.ghostty.desktop"
@@ -33,9 +34,9 @@
       #   window-demands-attention-focus = true;
       #   switcher-popup-delay = false;
       # };
-      "org/gnome/shell/pop-shell" = {
-        tile-by-default = false;       
-      };
+      # "org/gnome/shell/pop-shell" = {
+      #   tile-by-default = false;       
+      # };
       "org/gnome/mutter" = {
         edge-tiling = true; # false is required for pop-shell/tile-by-default
       };

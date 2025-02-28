@@ -8,7 +8,8 @@
     gnomeExtensions.hot-edge
     gnomeExtensions.just-perfection
     gnomeExtensions.rounded-window-corners-reborn
-    gnomeExtensions.pop-shell
+    # gnomeExtensions.pop-shell
+    gnomeExtensions.grand-theft-focus
     # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

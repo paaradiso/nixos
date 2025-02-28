@@ -18,7 +18,7 @@
       enable = true;
       enableCompletion = true;
       shellAliases = {
-        ls = "eza -la";
+        ls = "eza -la --group";
         cd = "z";
         rb = "sudo nixos-rebuild switch";
       };
