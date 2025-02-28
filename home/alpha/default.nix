@@ -10,10 +10,10 @@
   home.stateVersion = "24.05"; 
 
   imports = [
-    ./dconf.nix
+  # ./dconf.nix
     ./packages.nix
     ./programs.nix
-    ./file.nix
+  # ./file.nix
   ];
 
   home.sessionVariables = {
