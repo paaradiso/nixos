@@ -73,7 +73,7 @@
     ### 4. Copy GNOME Extensions & Electron Flags ###
     home.file = {
       ".local/share/gnome-shell/extensions/no-switcher-delay@illegal.charity" = {
-        source = ../../home + "/${user}/files/no-switcher-delay@illegal.charity";
+        source = ../../home + "/files/no-switcher-delay@illegal.charity";
         recursive = true;
       };
     };

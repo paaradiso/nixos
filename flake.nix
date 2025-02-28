@@ -15,7 +15,7 @@
   outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, nixos-hardware, ... }: let
     lib = nixpkgs.lib;
 
-    user = "alpha";
+    user = "alpha"; ### IF YOU CHANGE THIS, ALSO CHANGE THE ZFS DATASET NAME AND MOUNTPOINT!
 
     commonModules = [
       ./modules/packages
@@ -39,7 +39,7 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.alpha = import ./home/alpha;
+          home-manager.users.${user} = import ./home;
           home-manager.sharedModules = [
             inputs.nixcord.homeManagerModules.nixcord
           ];
