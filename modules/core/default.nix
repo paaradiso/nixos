@@ -4,6 +4,7 @@
   imports = [
     ./nix.nix
     ./boot.nix
+    ./users.nix
   ];
 
   i18n = {

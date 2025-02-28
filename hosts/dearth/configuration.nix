@@ -25,15 +25,5 @@
 
   networking.hostName = host;
   networking.hostId = "fafafafa";
-
-  users.users.alpha = {
-    isNormalUser = true;
-    home = "/home/alpha";
-    createHome = true;
-    extraGroups = [ "wheel" ];
-    shell = pkgs.zsh;
-  };
-
-  programs.zsh.enable = true;
 }
 

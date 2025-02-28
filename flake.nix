@@ -13,8 +13,9 @@
     nixcord.url = "github:kaylorben/nixcord";
   };
   outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, nixos-hardware, ... }: let
-
     lib = nixpkgs.lib;
+
+    user = "alpha";
 
     commonModules = [
       ./modules/packages
@@ -26,25 +27,19 @@
       nix-flatpak.nixosModules.nix-flatpak
     ];
 
-    mkHome = users: lib.listToAttrs (map (user: {
-      name = user;
-      value = import (./home + "/${user}/home.nix");
-    }) users);
-
     mkNixosSystem = { 
       host, 
-      users ? [ "alpha" ],
       system ? "x86_64-linux",
       extraModules ? [] 
     }: lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs host; };
+      specialArgs = { inherit inputs host user; };
       modules = [
         (./hosts + "/${host}/configuration.nix")
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users = mkHome users;
+          home-manager.users.alpha = import ./home/alpha;
           home-manager.sharedModules = [
             inputs.nixcord.homeManagerModules.nixcord
           ];
