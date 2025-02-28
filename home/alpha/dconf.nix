@@ -12,16 +12,17 @@
           "caffeine@patapon.info"
           "clipboard-indicator@tudmotu.com"
           "hotedge@jonathan.jdoda.ca"
-        #  "just-perfection-desktop@just-perfection"
+          # "just-perfection-desktop@just-perfection"
           "no-switcher-delay@illegal.charity"
           "rounded-window-corners@fxgn"
-          "pop-shell@system76.com"
+          # "pop-shell@system76.com"
           "status-icons@gnome-shell-extensions.gcampax.github.com"
         ];
         favorite-apps = [
           "com.mitchellh.ghostty.desktop"
           "org.gnome.Nautilus.desktop"
           "zen.desktop"
+          "discord.desktop"
           "com.spotify.Client.desktop"
         ];
       };
@@ -33,16 +34,17 @@
       #   switcher-popup-delay = false;
       # };
       "org/gnome/shell/pop-shell" = {
-        tile-by-default = true;       
+        tile-by-default = false;       
       };
       "org/gnome/mutter" = {
-        edge-tiling = false; # required for pop-shell/tile-by-default
+        edge-tiling = true; # false is required for pop-shell/tile-by-default
       };
       "org/gnome/desktop/interface" = {
         # monospace-font-name = "Iosevka Comfy Motion Fixed 11";
         # cursor-theme = "phinger-cursors-dark";
         show-battery-percentage = true;
 	enable-animations = false;
+        gtk-enable-primary-paste = false;
       };
       "org/gnome/desktop/wm/keybindings" = {
         switch-windows = ["<Alt>Tab"];
@@ -50,6 +52,9 @@
         switch-applications = [];
         switch-applications-backward = [];
 	toggle-fullscreen = ["<Super>f"];
+      };
+      "org/gnome/desktop/wm/preferences" = {
+        button-layout = "appmenu:minimize,maximize,close";
       };
       "org/gnome/desktop/peripherals/touchpad" = {
         natural-scroll = false;
