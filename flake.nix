@@ -13,30 +13,43 @@
     nixcord.url = "github:kaylorben/nixcord";
   };
   outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, nixos-hardware, ... }: let
+
+    lib = nixpkgs.lib;
+
+    commonModules = [
+      ./modules/packages
+      ./modules/flatpak
+      ./modules/theme
+      ./modules/core
+      ./modules/desktop/gnome.nix
+      stylix.nixosModules.stylix
+      nix-flatpak.nixosModules.nix-flatpak
+    ];
+
+    mkHome = users: lib.listToAttrs (map (user: {
+      name = user;
+      value = import (./home + "/${user}/home.nix");
+    }) users);
+
     mkNixosSystem = { 
       host, 
       users ? [ "alpha" ],
       system ? "x86_64-linux",
       extraModules ? [] 
-    }: nixpkgs.lib.nixosSystem {
+    }: lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs host; };
       modules = [
         (./hosts + "/${host}/configuration.nix")
-        nix-flatpak.nixosModules.nix-flatpak
-        stylix.nixosModules.stylix 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users = nixpkgs.lib.listToAttrs (map (user: {
-            name = user;
-            value = import (./home + "/${user}/home.nix");
-          }) users);
+          home-manager.users = mkHome users;
           home-manager.sharedModules = [
             inputs.nixcord.homeManagerModules.nixcord
           ];
         }
-      ] ++ extraModules;
+      ] ++ commonModules ++ extraModules;
     };
   in {
     nixosConfigurations.utopia    = mkNixosSystem { host = "utopia";    extraModules = [ nixos-hardware.nixosModules.dell-xps-13-9360 ]; };
