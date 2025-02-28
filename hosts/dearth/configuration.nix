@@ -35,7 +35,5 @@
   };
 
   programs.zsh.enable = true;
-
-
 }
 
