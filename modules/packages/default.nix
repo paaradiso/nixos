@@ -24,5 +24,6 @@
     inputs.zen-browser.packages."${system}".default
     helix
     ghostty
+    feishin
   ];
 }
