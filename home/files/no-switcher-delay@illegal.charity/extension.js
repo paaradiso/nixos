@@ -1,3 +1,4 @@
+// CODE TAKEN FROM https://gitlab.gnome.org/jrahmatzadeh/just-perfection
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as SwitcherPopup from 'resource:///org/gnome/shell/ui/switcherPopup.js';
 
