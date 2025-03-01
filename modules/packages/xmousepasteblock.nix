@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ xmousepasteblock ];
+  environment.systemPackages = [ pkgs.xmousepasteblock ];
 
   systemd.user.services.xmousepasteblock = {
     enable = true;

@@ -4,6 +4,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      ../../modules/hardware/easyeffects-akg-k371-brainwavz-oval.nix
     ];
 
   boot.initrd.luks.devices = {
