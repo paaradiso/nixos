@@ -15,6 +15,7 @@
       device = "/dev/disk/by-uuid/1b6679d0-cdb8-4886-b82c-b7b1b4ea6f4d";
       keyFileSize = 8192;
       keyFile = "/dev/mapper/cryptkey";
+      allowDiscards = true;
     };
     cryptroot = {
       device = "/dev/disk/by-uuid/63b33eb5-01fb-42ca-af0b-b71c954f02e9";
@@ -26,5 +27,12 @@
 
   networking.hostName = host;
   networking.hostId = "fafafafa";
+
+  services.flatpak.packages = [ "sh.ppy.osu" ];
+  boot.blacklistedKernelModules = [ "wacom" ];
+  hardware.opentabletdriver = {
+    enable = true;
+    daemon.enable = true;
+  };
 }
 
