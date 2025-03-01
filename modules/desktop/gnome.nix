@@ -1,7 +1,6 @@
 { config, lib, pkgs, user, ... }:
 
 {
-  ### 1. Enable GNOME and Xserver ###
   services.xserver = {
     enable = true;
     displayManager.gdm = {
@@ -11,7 +10,6 @@
     desktopManager.gnome.enable = true;
   };
 
-  ### 2. Remove Unwanted GNOME Apps ###
   environment.gnome.excludePackages = with pkgs; [
     gnome-console
     gnome-tour
@@ -24,8 +22,17 @@
     gnome-characters
   ];
 
-  ### 3. Home Manager DConf Settings ###
   home-manager.users.${user} = {
+    home.packages = with pkgs; [
+      gnomeExtensions.blur-my-shell
+      gnomeExtensions.caffeine
+      gnomeExtensions.clipboard-indicator
+      gnomeExtensions.hot-edge
+      gnomeExtensions.just-perfection
+      gnomeExtensions.rounded-window-corners-reborn
+      gnomeExtensions.grand-theft-focus
+    ];
+
     dconf = {
       enable = true;
       settings = {
@@ -70,7 +77,6 @@
       }; 
     };
 
-    ### 4. Copy GNOME Extensions & Electron Flags ###
     home.file = {
       ".local/share/gnome-shell/extensions/no-switcher-delay@illegal.charity" = {
         source = ../../home + "/files/no-switcher-delay@illegal.charity";

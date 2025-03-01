@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 
 {
   stylix = {
@@ -27,4 +27,6 @@
       };
     };
   };
+
+  home-manager.users.${user}.stylix.enable = true;
 }
