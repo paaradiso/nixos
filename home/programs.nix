@@ -24,10 +24,20 @@
       };
       initExtra = ''
         autoload -Uz vcs_info
-        precmd() { vcs_info }
+        precmd() { 
+          vcs_info
+          # Dynamically update NIX_SHELL_PROMPT before each command
+          if [[ -n "$IN_NIX_SHELL" ]]; then
+            NIX_SHELL_PROMPT="❆ "
+          else
+            NIX_SHELL_PROMPT=""
+          fi
+          PROMPT='%F{blue}%~%f %F{red}''${vcs_info_msg_0_}%f''${NIX_SHELL_PROMPT}$ '
+        }
         zstyle ':vcs_info:git:*' formats '%b '
         setopt PROMPT_SUBST
-        PROMPT='%F{blue}%~%f %F{red}''${vcs_info_msg_0_}%f$ '
+
+        eval "$(direnv hook zsh)"
       '';
     };
     zoxide = {

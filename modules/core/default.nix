@@ -5,6 +5,7 @@
     ./nix.nix
     ./boot.nix
     ./users.nix
+    ./direnv.nix
   ];
 
   i18n = {
