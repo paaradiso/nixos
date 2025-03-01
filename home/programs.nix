@@ -26,7 +26,6 @@
         autoload -Uz vcs_info
         precmd() { 
           vcs_info
-          # Dynamically update NIX_SHELL_PROMPT before each command
           if [[ -n "$IN_NIX_SHELL" ]]; then
             NIX_SHELL_PROMPT="❆ "
           else
