@@ -27,11 +27,11 @@
         precmd() { 
           vcs_info
           if [[ -n "$IN_NIX_SHELL" ]]; then
-            NIX_SHELL_PROMPT="❆ "
+            NIX_SHELL_INDICATOR="λ "
           else
-            NIX_SHELL_PROMPT=""
+            NIX_SHELL_INDICATOR=""
           fi
-          PROMPT='%F{blue}%~%f %F{red}''${vcs_info_msg_0_}%f''${NIX_SHELL_PROMPT}$ '
+          PROMPT='%F{blue}%~%f %F{red}''${vcs_info_msg_0_}%f%F{magenta}''${NIX_SHELL_INDICATOR}%f$ '
         }
         zstyle ':vcs_info:git:*' formats '%b '
         setopt PROMPT_SUBST
