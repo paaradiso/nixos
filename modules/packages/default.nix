@@ -27,5 +27,6 @@
     feishin
     teams-for-linux
     obsidian
+    libreoffice-still
   ];
 }

@@ -6,6 +6,7 @@
     ./boot.nix
     ./users.nix
     ./direnv.nix
+    ./zfs.nix
   ];
 
   i18n = {
