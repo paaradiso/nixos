@@ -26,5 +26,6 @@
     ghostty
     feishin
     teams-for-linux
+    obsidian
   ];
 }
