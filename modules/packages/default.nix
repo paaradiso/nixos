@@ -21,12 +21,13 @@
     bat
     eza
     jellyfin-media-player
-    inputs.zen-browser.packages."${system}".default
+    inputs.zen-browser.packages.${system}.default
     helix
     ghostty
     feishin
     teams-for-linux
     obsidian
     libreoffice-still
+    inputs.agenix.packages.${system}.default
   ];
 }
