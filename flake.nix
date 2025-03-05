@@ -28,7 +28,8 @@
       ./modules/theme
       ./modules/core
       ./modules/secrets
-      ./modules/desktop/gnome.nix
+      ./modules/desktop
+      ./modules/system
       agenix.nixosModules.default 
       stylix.nixosModules.stylix
       nix-flatpak.nixosModules.nix-flatpak

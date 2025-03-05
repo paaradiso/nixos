@@ -10,4 +10,5 @@
     owner = user;
     group = "users";
   };
+  age.secrets.home_wg.file = ./home_wg.age;
 }
