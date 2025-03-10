@@ -11,8 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.darwin.follows = "";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
+    nvf = {
+      url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -21,8 +21,17 @@
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     nixcord.url = "github:kaylorben/nixcord";
   };
-  outputs = inputs@{ nixpkgs, home-manager, nix-flatpak, stylix, nixos-hardware, agenix, ... }: let
-    lib = nixpkgs.lib;
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    nix-flatpak,
+    stylix,
+    nixos-hardware,
+    agenix,
+    nvf,
+    ...
+  }: let
+    inherit (nixpkgs) lib;
 
     user = "alpha"; ### IF YOU CHANGE THIS, ALSO CHANGE THE ZFS DATASET NAME AND MOUNTPOINT!
 
@@ -32,36 +41,48 @@
       ./modules/theme
       ./modules/core
       ./modules/secrets
+      ./modules/programs
       ./modules/desktop/gnome.nix
-      ./modules/programs/nixvim/nixvim.nix
-      agenix.nixosModules.default 
+      agenix.nixosModules.default
       stylix.nixosModules.stylix
       nix-flatpak.nixosModules.nix-flatpak
+      nvf.nixosModules.default
     ];
 
-    mkNixosSystem = { 
-      host, 
+    mkNixosSystem = {
+      host,
       system ? "x86_64-linux",
-      extraModules ? [] 
-    }: lib.nixosSystem {
-      inherit system;
-      specialArgs = { inherit inputs host user; };
-      modules = [
-        (./hosts + "/${host}")
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${user} = ./home;
-          home-manager.sharedModules = [
-            inputs.nixcord.homeManagerModules.nixcord
-          ];
-          home-manager.extraSpecialArgs = { inherit user; };
-        }
-      ] ++ commonModules ++ extraModules;
-    };
+      extraModules ? [],
+    }:
+      lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs host user;};
+        modules =
+          [
+            (./hosts + "/${host}")
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.${user} = ./home;
+              home-manager.sharedModules = [
+                inputs.nixcord.homeManagerModules.nixcord
+              ];
+              home-manager.extraSpecialArgs = {inherit user;};
+            }
+          ]
+          ++ commonModules
+          ++ extraModules;
+      };
   in {
-    nixosConfigurations.utopia    = mkNixosSystem { host = "utopia";    extraModules = [ nixos-hardware.nixosModules.dell-xps-13-9360 ]; };
-    nixosConfigurations.phosphene = mkNixosSystem { host = "phosphene"; extraModules = [ nixos-hardware.nixosModules.lenovo-thinkpad-t490s ]; };
-    nixosConfigurations.dearth    = mkNixosSystem { host = "dearth"; };
+    nixosConfigurations.utopia = mkNixosSystem {
+      host = "utopia";
+      extraModules = [nixos-hardware.nixosModules.dell-xps-13-9360];
+    };
+    nixosConfigurations.phosphene = mkNixosSystem {
+      host = "phosphene";
+      extraModules = [nixos-hardware.nixosModules.lenovo-thinkpad-t490s];
+    };
+    nixosConfigurations.dearth = mkNixosSystem {host = "dearth";};
   };
 }
