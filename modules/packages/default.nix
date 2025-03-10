@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./neovim
     ./xmousepasteblock.nix
   ];
 
@@ -14,7 +15,6 @@
     ncdu
     git
     lazygit
-    zed-editor
     bitwarden
     zsh
     zoxide
@@ -29,5 +29,6 @@
     obsidian
     libreoffice-still
     inputs.agenix.packages.${system}.default
+    zed-editor
   ];
 }

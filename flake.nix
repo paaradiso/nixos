@@ -11,6 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.darwin.follows = "";
     };
+    kickstart.url = "github:paaradiso/kickstart-nix.nvim";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     stylix.url = "github:danth/stylix/release-24.11";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
