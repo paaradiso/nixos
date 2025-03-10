@@ -34,6 +34,7 @@
 
         mini = {
           # text editing
+          ai.enable = true;
           comment.enable = true;
           move.enable = true;
           pairs.enable = true;
