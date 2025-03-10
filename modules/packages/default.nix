@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./neovim
     ./xmousepasteblock.nix
   ];
 

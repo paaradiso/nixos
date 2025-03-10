@@ -1,0 +1,3 @@
+[submodule "modules/programs/nixvim"]
+	path = modules/programs/nixvim
+	url = git@github.com:paaradiso/kickstart.nixvim.git

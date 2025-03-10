@@ -28,5 +28,10 @@
     };
   };
 
-  home-manager.users.${user}.stylix.enable = true;
+  home-manager.users.${user}.stylix = {
+    enable = true;
+    targets = {
+      nixvim.enable = true;
+    };
+  };
 }
