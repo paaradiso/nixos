@@ -65,6 +65,14 @@
           noice.enable = true;
         };
 
+        terminal = {
+          toggleterm = {
+            enable = true;
+
+            lazygit.enable = true;
+          };
+        };
+
         mini = {
           # text editing
           ai.enable = true;
