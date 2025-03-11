@@ -3,6 +3,7 @@
     enable = true;
     settings = {
       vim = {
+
         theme = {
           enable = true;
           name = "oxocarbon"; # temporary; nvf target in stylix is not in release-24.11 branch yet
@@ -32,6 +33,15 @@
           shiftwidth = 2;
           tabstop = 2;
         };
+        
+        binds = {
+          cheatsheet.enable = true;
+          whichKey.enable = true;
+        };
+
+        ui = {
+          noice.enable = true;
+        };
 
         mini = {
           # text editing
@@ -49,6 +59,29 @@
           statusline.enable = true;
           tabline.enable = true;
         };
+
+        keymaps = [
+          # buffer
+          {
+            key = "<Tab>";
+            mode = "n";
+            silent = true;
+            action = ":bnext<CR>";
+          }
+          {
+            key = "<S-Tab>";
+            mode = "n";
+            silent = true;
+            action = ":bprev<CR>";
+          }
+          
+          {
+            key = "<Leader>ts";
+            mode = "n";
+            silent = true;
+            action = ":Telescope commands<CR>";
+          }
+        ];
 
       };
     };
