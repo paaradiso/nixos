@@ -1,16 +1,19 @@
-{ config, ... }:
-
-{
+{config, ...}: {
   programs.nvf = {
     enable = true;
     settings = {
       vim = {
+        telescope.enable = true;
+        autocomplete.nvim-cmp.enable = true;
+
+        lineNumberMode = "number";
 
         theme = {
           enable = true;
           name = "base16"; # temporary; nvf target in stylix is not in release-24.11 branch yet
           base16-colors = {
-            inherit (config.lib.stylix.colors.withHashtag)
+            inherit
+              (config.lib.stylix.colors.withHashtag)
               base00
               base01
               base02
@@ -39,11 +42,21 @@
           nix.enable = true;
           java.enable = true;
         };
-         
-        telescope.enable = true;
-        autocomplete.nvim-cmp.enable = true;
-                                
-        lineNumberMode = "number";
+
+        formatter = {
+          conform-nvim = {
+            enable = true;
+            setupOpts = {
+              format_on_save = {
+                lsp_format = "fallback";
+                timeout_ms = 500;
+              };
+              formatters_by_ft = {
+                nix = ["alejandra"];
+              };
+            };
+          };
+        };
 
         visuals = {
           indent-blankline = {
@@ -55,7 +68,7 @@
           shiftwidth = 2;
           tabstop = 2;
         };
-        
+
         binds = {
           cheatsheet.enable = true;
           whichKey.enable = true;
@@ -139,7 +152,6 @@
             action = "<C-w>l";
           }
         ];
-
       };
     };
   };

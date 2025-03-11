@@ -1,6 +1,8 @@
-{ pkgs, inputs, ... }:
-
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./xmousepasteblock.nix
   ];
@@ -28,6 +30,6 @@
     obsidian
     libreoffice-still
     inputs.agenix.packages.${system}.default
-    zed-editor
+    inputs.alejandra.defaultPackage.${system}
   ];
 }
