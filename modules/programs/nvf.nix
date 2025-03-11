@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   programs.nvf = {
     enable = true;
@@ -6,7 +8,27 @@
 
         theme = {
           enable = true;
-          name = "oxocarbon"; # temporary; nvf target in stylix is not in release-24.11 branch yet
+          name = "base16"; # temporary; nvf target in stylix is not in release-24.11 branch yet
+          base16-colors = {
+            inherit (config.lib.stylix.colors.withHashtag)
+              base00
+              base01
+              base02
+              base03
+              base04
+              base05
+              base06
+              base07
+              base08
+              base09
+              base0A
+              base0B
+              base0C
+              base0D
+              base0E
+              base0F
+              ;
+          };
           style = "dark";
         };
 
