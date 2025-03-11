@@ -8,6 +8,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
     targets = {
       # gnome.enable = false;
+      # nvf.enable = false;
     };
     cursor = {
       package = pkgs.phinger-cursors;
@@ -28,5 +29,7 @@
     };
   };
 
-  home-manager.users.${user}.stylix.enable = true;
+  home-manager.users.${user}.stylix = {
+    enable = true;
+  };
 }
