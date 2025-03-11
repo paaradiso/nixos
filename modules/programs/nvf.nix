@@ -74,12 +74,39 @@
             silent = true;
             action = ":bprev<CR>";
           }
-          
+          ###
+          # telescope
           {
             key = "<Leader>ts";
             mode = "n";
             silent = true;
             action = ":Telescope commands<CR>";
+          }
+          ###
+          # arrows for pane navigation
+          {
+            key = "<Left>";
+            mode = "n";
+            silent = true;
+            action = "<C-w>h";
+          }
+          {
+            key = "<Down>";
+            mode = "n";
+            silent = true;
+            action = "<C-w>j";
+          }
+          {
+            key = "<Up>";
+            mode = "n";
+            silent = true;
+            action = "<C-w>k";
+          }
+          {
+            key = "<Right>";
+            mode = "n";
+            silent = true;
+            action = "<C-w>l";
           }
         ];
 
