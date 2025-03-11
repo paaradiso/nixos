@@ -14,6 +14,7 @@
           enableTreesitter = true;
 
           nix.enable = true;
+          java.enable = true;
         };
          
         telescope.enable = true;
