@@ -19,6 +19,7 @@
         ls = "eza -la --group";
         cd = "z";
         rb = "sudo nixos-rebuild switch";
+        lg = "lazygit";
       };
       initExtra = ''
         autoload -Uz vcs_info
