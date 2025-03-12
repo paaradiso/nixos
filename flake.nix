@@ -79,6 +79,8 @@
           ++ extraModules;
       };
   in {
+    formatter.x86_64-linux = inputs.alejandra.defaultPackage.x86_64-linux;
+
     nixosConfigurations.utopia = mkNixosSystem {
       host = "utopia";
       extraModules = [nixos-hardware.nixosModules.dell-xps-13-9360];

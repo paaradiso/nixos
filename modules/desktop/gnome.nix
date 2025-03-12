@@ -1,6 +1,10 @@
-{ config, lib, pkgs, user, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  user,
+  ...
+}: {
   services.xserver = {
     enable = true;
     displayManager.gdm = {
@@ -56,7 +60,7 @@
             "com.spotify.Client.desktop"
           ];
         };
-        "org/gnome/mutter" = { edge-tiling = true; };
+        "org/gnome/mutter" = {edge-tiling = true;};
         "org/gnome/desktop/interface" = {
           show-battery-percentage = true;
           enable-animations = false;
@@ -72,9 +76,9 @@
         "org/gnome/desktop/wm/preferences" = {
           button-layout = "appmenu:minimize,maximize,close";
         };
-        "org/gnome/desktop/peripherals/touchpad" = { natural-scroll = false; };
-        "org/gnome/desktop/peripherals/mouse" = { accel-profile = "flat"; };
-      }; 
+        "org/gnome/desktop/peripherals/touchpad" = {natural-scroll = false;};
+        "org/gnome/desktop/peripherals/mouse" = {accel-profile = "flat";};
+      };
     };
 
     home.file = {
@@ -85,4 +89,3 @@
     };
   };
 }
-

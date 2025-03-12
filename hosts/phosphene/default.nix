@@ -1,10 +1,13 @@
-{ config, pkgs, inputs, host, ... }:
-
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  inputs,
+  host,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot.initrd.luks.devices = {
     cryptkey = {
@@ -26,4 +29,3 @@
   networking.hostName = host;
   networking.hostId = "feedaaaa";
 }
-

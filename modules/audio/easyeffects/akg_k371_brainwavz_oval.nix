@@ -1,6 +1,8 @@
-{ pkgs, user, ... }:
-
 {
+  pkgs,
+  user,
+  ...
+}: {
   imports = [
     ./flat.nix
   ];

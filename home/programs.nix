@@ -1,6 +1,4 @@
-{ ... }: 
-
-{
+{...}: {
   programs = {
     git = {
       enable = true;
@@ -24,7 +22,7 @@
       };
       initExtra = ''
         autoload -Uz vcs_info
-        precmd() { 
+        precmd() {
           vcs_info
           if [[ -n "$IN_NIX_SHELL" ]]; then
             NIX_SHELL_INDICATOR="λ "

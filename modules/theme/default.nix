@@ -1,6 +1,8 @@
-{ pkgs, user, ... }:
-
 {
+  pkgs,
+  user,
+  ...
+}: {
   stylix = {
     enable = true;
     polarity = "dark";

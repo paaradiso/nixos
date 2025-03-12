@@ -1,6 +1,10 @@
-{ config, pkgs, lib, user, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  user,
+  ...
+}: {
   programs.home-manager.enable = true;
 
   home.username = user;
@@ -14,5 +18,5 @@
     EDITOR = "vim";
   };
 
-  home.stateVersion = "24.05"; 
+  home.stateVersion = "24.05";
 }

@@ -1,11 +1,14 @@
-{ config, pkgs, inputs, host, ... }:
-
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ../../modules/audio/easyeffects/akg_k371_brainwavz_oval.nix
-    ];
+  config,
+  pkgs,
+  inputs,
+  host,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/audio/easyeffects/akg_k371_brainwavz_oval.nix
+  ];
 
   boot.initrd.luks.devices = {
     cryptkey = {
@@ -28,11 +31,10 @@
   networking.hostName = host;
   networking.hostId = "fafafafa";
 
-  services.flatpak.packages = [ "sh.ppy.osu" ];
-  boot.blacklistedKernelModules = [ "wacom" ];
+  services.flatpak.packages = ["sh.ppy.osu"];
+  boot.blacklistedKernelModules = ["wacom"];
   hardware.opentabletdriver = {
     enable = true;
     daemon.enable = true;
   };
 }
-

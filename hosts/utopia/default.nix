@@ -1,18 +1,24 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, pkgs, inputs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.optimise.automatic = true;
-  nix.gc = { automatic = true; dates = "weekly"; options = "--delete-older-than 14d"; }; 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
 
   boot.initrd.luks.devices = {
     cryptkey = {
@@ -40,9 +46,9 @@
     enable = true;
   };
   boot.consoleLogLevel = 0;
-  boot.kernelParams = [ "quiet" "splash" "boot.shell_on_fail" "loglevel=3" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" ];
+  boot.kernelParams = ["quiet" "splash" "boot.shell_on_fail" "loglevel=3" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3"];
   boot.loader.timeout = 0;
-  
+
   networking.hostName = "utopia"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -50,7 +56,7 @@
 
   # Set your time zone.
   time.timeZone = "Australia/Adelaide";
-  
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -64,7 +70,7 @@
   # };
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    supportedLocales = [ "en_US.UTF-8/UTF-8" ];
+    supportedLocales = ["en_US.UTF-8/UTF-8"];
   };
 
   console.keyMap = "us";
@@ -73,13 +79,12 @@
   services.xserver.enable = true;
   services.xserver.xkb.options = "ctrl:nocaps";
 
-
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  environment.gnome.excludePackages = (with pkgs; [
+  environment.gnome.excludePackages = with pkgs; [
     gnome-console
     gnome-tour
     gnome-text-editor
@@ -89,15 +94,14 @@
     epiphany # browser
     geary # email
     gnome-characters
-  ]);
+  ];
 
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
     config.common.default = "gtk";
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -122,14 +126,14 @@
     isNormalUser = true;
     home = "/home/alpha";
     createHome = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [];
   };
   users.defaultUserShell = pkgs.zsh;
 
   # programs.firefox.enable = true;
-  
-  nixpkgs.config.allowUnfree = true; 
+
+  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -160,7 +164,6 @@
       "org.quassel_irc.QuasselClient"
     ];
   };
-
 
   stylix = {
     enable = true;
@@ -236,4 +239,3 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
 }
-
