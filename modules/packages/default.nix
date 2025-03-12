@@ -15,6 +15,7 @@
     htop
     ncdu
     git
+    # pre-commit
     lazygit
     bitwarden
     zsh
