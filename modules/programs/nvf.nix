@@ -6,7 +6,7 @@
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
 
-        lineNumberMode = "number";
+        # lineNumberMode = "number";
 
         theme = {
           enable = true;
@@ -76,7 +76,6 @@
 
         ui = {
           noice.enable = true;
-          nvim-ufo.enable = true;
         };
 
         terminal = {
