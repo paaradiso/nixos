@@ -67,6 +67,7 @@
         options = {
           shiftwidth = 2;
           tabstop = 2;
+          clipboard = "unnamedplus";
         };
 
         binds = {
@@ -76,6 +77,29 @@
 
         ui = {
           noice.enable = true;
+        };
+
+        dashboard = {
+          alpha = {
+            enable = true;
+            theme = "theta";
+          };
+        };
+
+        filetree = {
+          neo-tree = {
+            enable = true;
+            setupOpts = {
+              # filesystem.hijack_netrw_behavior = "open_default", "disabled", "open_current"
+            };
+          };
+        };
+
+        assistant = {
+          copilot = {
+            enable = true;
+            cmp.enable = true;
+          };
         };
 
         terminal = {
@@ -150,6 +174,14 @@
             mode = "n";
             silent = true;
             action = "<C-w>l";
+          }
+          ###
+          # neo=tree
+          {
+            key = "<Leader>e";
+            mode = "n";
+            silent = true;
+            action = ":Neotree toggle<CR>";
           }
         ];
       };

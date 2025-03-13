@@ -26,6 +26,10 @@
     gnome-characters
   ];
 
+  environment.systemPackages = with pkgs; [
+    wl-clipboard
+  ];
+
   home-manager.users.${user} = {
     home.packages = with pkgs; [
       gnomeExtensions.blur-my-shell
