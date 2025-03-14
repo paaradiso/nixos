@@ -18,5 +18,9 @@
     EDITOR = "vim";
   };
 
+  home.file.".profile".text = ''
+    export MOZ_ENABLE_WAYLAND=0
+  ''; # it's bugged
+
   home.stateVersion = "24.05";
 }
