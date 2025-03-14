@@ -65,8 +65,8 @@
         };
 
         options = {
-          shiftwidth = 2;
-          tabstop = 2;
+          shiftwidth = 4;
+          tabstop = 4;
           clipboard = "unnamedplus";
         };
 
@@ -127,19 +127,35 @@
           tabline.enable = true;
         };
 
+        augroups = [
+          {
+            name = "setIndent";
+            clear = true;
+          }
+        ];
+
+        autocmds = [
+          {
+            event = ["FileType"];
+            pattern = ["nix"];
+            command = "setlocal shiftwidth=2 tabstop=2";
+            group = "setIndent";
+          }
+        ];
+
         keymaps = [
           # buffer
           {
             key = "<Tab>";
             mode = "n";
             silent = true;
-            action = ":bnext<CR>";
+            action = "<cmd>bnext<CR>";
           }
           {
             key = "<S-Tab>";
             mode = "n";
             silent = true;
-            action = ":bprev<CR>";
+            action = "<cmd>bprev<CR>";
           }
           ###
           # telescope
@@ -147,7 +163,7 @@
             key = "<Leader>ts";
             mode = "n";
             silent = true;
-            action = ":Telescope commands<CR>";
+            action = "<cmd>Telescope commands<CR>";
           }
           ###
           # arrows for pane navigation
@@ -181,7 +197,15 @@
             key = "<Leader>e";
             mode = "n";
             silent = true;
-            action = ":Neotree toggle<CR>";
+            action = "<cmd>Neotree toggle<CR>";
+          }
+          ###
+          # misc
+          {
+            key = "<Leader>/";
+            mode = "n";
+            silent = true;
+            action = "<cmd>nohlsearch<cr>";
           }
         ];
       };
