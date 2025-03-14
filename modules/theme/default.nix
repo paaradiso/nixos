@@ -4,17 +4,14 @@
   user,
   ...
 }: let
-  scheme = "gruvbox-material-dark-soft";
+  scheme = "chalk";
+  polarity = "dark";
 in {
   stylix = {
     enable = true;
-    polarity = "dark";
+    inherit polarity;
     image = config.lib.stylix.pixel "base00";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${scheme}.yaml";
-    targets = {
-      # gnome.enable = false;
-      # nvf.enable = false;
-    };
     cursor = {
       package = pkgs.phinger-cursors;
       name = "phinger-cursors-dark";
