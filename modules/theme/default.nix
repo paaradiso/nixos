@@ -1,13 +1,16 @@
 {
+  config,
   pkgs,
   user,
   ...
-}: {
+}: let
+  scheme = "gruvbox-material-dark-soft";
+in {
   stylix = {
     enable = true;
     polarity = "dark";
-    image = ../../assets/161616.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
+    image = config.lib.stylix.pixel "base00";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/${scheme}.yaml";
     targets = {
       # gnome.enable = false;
       # nvf.enable = false;
