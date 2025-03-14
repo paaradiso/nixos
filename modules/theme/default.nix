@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  user,
+  # user,
   ...
 }: let
   scheme = "chalk";
@@ -31,7 +31,7 @@ in {
     };
   };
 
-  home-manager.users.${user}.stylix = {
-    enable = true;
-  };
+  # home-manager.users.${user}.stylix = {
+  #   enable = true;
+  # };
 }
