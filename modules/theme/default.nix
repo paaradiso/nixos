@@ -4,7 +4,7 @@
   # user,
   ...
 }: let
-  scheme = "black-metal-burzum";
+  scheme = "mountain";
   polarity = "dark";
 in {
   stylix = {
