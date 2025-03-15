@@ -1,4 +1,4 @@
-{config, ...}: {
+{
   programs.nvf = {
     enable = true;
     settings = {
@@ -179,6 +179,15 @@
             mode = "n";
             silent = true;
             action = "<cmd>nohlsearch<cr>";
+          }
+          ###
+          # nixos
+          {
+            key = "<Leader>ns";
+            mode = "n";
+            silent = true;
+            action = "<cmd>ToggleTerm TermExec cmd='sudo nixos-rebuild switch'<CR>";
+            desc = "NixOS rebuild switch";
           }
         ];
       };

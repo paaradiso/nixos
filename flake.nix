@@ -47,9 +47,9 @@
       ./modules/secrets
       ./modules/programs
       ./modules/desktop/gnome.nix
+      nix-flatpak.nixosModules.nix-flatpak
       agenix.nixosModules.default
       stylix.nixosModules.stylix
-      nix-flatpak.nixosModules.nix-flatpak
       nvf.nixosModules.default
     ];
 

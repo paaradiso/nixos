@@ -19,7 +19,7 @@
     gnome-tour
     gnome-text-editor
     gnome-music
-    totem # videos
+    # totem # videos
     cheese # webcam
     epiphany # browser
     geary # email
