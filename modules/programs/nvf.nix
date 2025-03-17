@@ -32,9 +32,7 @@
         };
 
         visuals = {
-          indent-blankline = {
-            enable = true;
-          };
+          indent-blankline.enable = true;
         };
 
         options = {
