@@ -6,9 +6,7 @@
       timeout = 0;
     };
     initrd.systemd.enable = true; # Required for plymouth to show password prompt for LUKS
-    plymouth = {
-      enable = true;
-    };
+    plymouth.enable = true;
     consoleLogLevel = 0;
     kernelParams = [
       "quiet"
