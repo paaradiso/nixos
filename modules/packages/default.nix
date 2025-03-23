@@ -32,5 +32,6 @@
     libreoffice-still
     inputs.agenix.packages.${system}.default
     inputs.alejandra.defaultPackage.${system}
+    kooha
   ];
 }

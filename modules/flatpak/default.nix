@@ -5,5 +5,6 @@
       "com.spotify.Client"
       "org.quassel_irc.QuasselClient"
     ];
+    update.onActivation = true;
   };
 }
