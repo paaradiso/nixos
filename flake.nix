@@ -23,7 +23,7 @@
     stylix.url = "github:danth/stylix";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    nixcord.url = "github:kaylorben/nixcord";
+    nixcord.url = "github:KaylorBen/nixcord";
   };
   outputs = inputs @ {
     nixpkgs,
