@@ -3,7 +3,7 @@
     git = {
       enable = true;
       userName = "paaradiso";
-      userEmail = "paaradiso@swag.horse";
+      userEmail = "38374917+paaradiso@users.noreply.github.com";
       extraConfig = {
         init.defaultBranch = "main";
       };
@@ -54,6 +54,7 @@
     bat.enable = true;
     nixcord = {
       enable = true;
+      discord.autoscroll.enable = true;
     };
     zed-editor.enable = true;
   };

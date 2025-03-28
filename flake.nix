@@ -39,10 +39,6 @@
 
     user = "alpha"; ### IF YOU CHANGE THIS, ALSO CHANGE THE ZFS DATASET NAME AND MOUNTPOINT!
 
-    overlays = [
-      (import ./overlays/discord.nix)
-    ];
-
     commonModules = [
       ./modules/packages
       ./modules/flatpak
@@ -55,9 +51,6 @@
       agenix.nixosModules.default
       stylix.nixosModules.stylix
       nvf.nixosModules.default
-      {
-        nixpkgs.overlays = overlays;
-      }
     ];
 
     mkNixosSystem = {
