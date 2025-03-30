@@ -12,7 +12,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
@@ -46,6 +46,11 @@
   fileSystems."/home/alpha" = {
     device = "pool/user/home/alpha";
     fsType = "zfs";
+  };
+
+  fileSystems."/mnt/games" = {
+    device = "/dev/disk/by-uuid/34980e02-b011-4292-8b43-1ae6fec4a330";
+    fsType = "ext4";
   };
 
   swapDevices = [
