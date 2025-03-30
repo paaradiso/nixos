@@ -60,6 +60,7 @@
             "com.mitchellh.ghostty.desktop"
             "org.gnome.Nautilus.desktop"
             "zen.desktop"
+            "steam.desktop"
             "discord.desktop"
             "com.spotify.Client.desktop"
           ];
