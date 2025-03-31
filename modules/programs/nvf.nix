@@ -14,6 +14,7 @@
 
           nix.enable = true;
           java.enable = true;
+          ts.enable = true;
         };
 
         formatter = {
@@ -26,6 +27,8 @@
               };
               formatters_by_ft = {
                 nix = ["alejandra"];
+                javascript = ["prettierd"];
+                typescript = ["prettierd"];
               };
             };
           };
@@ -94,6 +97,7 @@
 
           # appearance
           animate.enable = true;
+          notify.enable = true;
           statusline.enable = true;
           tabline.enable = true;
         };
@@ -137,7 +141,7 @@
             action = "<cmd>Telescope commands<CR>";
           }
           ###
-          # arrows for pane navigation
+          # pane manipulation and navigation
           {
             key = "<Left>";
             mode = "n";
@@ -161,6 +165,36 @@
             mode = "n";
             silent = true;
             action = "<C-w>l";
+          }
+          {
+            key = "<C-Leader>;";
+            mode = "n";
+            silent = true;
+            action = "<C-w><";
+          }
+          {
+            key = "<C-Leader>'";
+            mode = "n";
+            silent = true;
+            action = "<C-w>>";
+          }
+          {
+            key = "<C-Leader>/";
+            mode = "n";
+            silent = true;
+            action = "<C-w>+";
+          }
+          {
+            key = "<C-Leader>[";
+            mode = "n";
+            silent = true;
+            action = "<C-w>-";
+          }
+          {
+            key = "<C-Leader>=";
+            mode = "n";
+            silent = true;
+            action = "<C-w>=";
           }
           ###
           # neo=tree
