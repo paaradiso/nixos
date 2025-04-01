@@ -28,6 +28,7 @@
 
   environment.systemPackages = with pkgs; [
     wl-clipboard
+    mission-center
   ];
 
   home-manager.users.${user} = {

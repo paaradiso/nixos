@@ -4,9 +4,14 @@
     settings = {
       vim = {
         telescope.enable = true;
-        autocomplete.nvim-cmp.enable = true;
 
         # lineNumberMode = "number";
+
+        autocomplete = {
+          nvim-cmp = {
+            enable = true;
+          };
+        };
 
         languages = {
           enableLSP = true;
@@ -69,12 +74,12 @@
           };
         };
 
-        assistant = {
-          copilot = {
-            enable = true;
-            cmp.enable = true;
-          };
-        };
+        # assistant = {
+        #   copilot = {
+        #     enable = true;
+        #     cmp.enable = true;
+        #   };
+        # };
 
         terminal = {
           toggleterm = {

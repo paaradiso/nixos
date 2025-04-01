@@ -30,6 +30,9 @@
     };
   };
 
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = ["amdgpu"];
+
   networking.hostName = host;
   networking.hostId = "fafafafa";
 
