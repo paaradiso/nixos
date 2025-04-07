@@ -56,6 +56,5 @@
       enable = true;
       discord.autoscroll.enable = true;
     };
-    zed-editor.enable = true;
   };
 }

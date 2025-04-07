@@ -60,7 +60,7 @@
           favorite-apps = [
             "com.mitchellh.ghostty.desktop"
             "org.gnome.Nautilus.desktop"
-            "zen.desktop"
+            "zen-beta.desktop"
             "steam.desktop"
             "discord.desktop"
             "com.spotify.Client.desktop"
