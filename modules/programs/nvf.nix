@@ -74,6 +74,10 @@
           };
         };
 
+        utility = {
+          oil-nvim.enable = true;
+        };
+
         # assistant = {
         #   copilot = {
         #     enable = true;
