@@ -75,7 +75,12 @@
         };
 
         utility = {
-          oil-nvim.enable = true;
+          oil-nvim = {
+            enable = true;
+            # setupOpts = {
+            #
+            # }
+          };
         };
 
         # assistant = {
@@ -102,7 +107,7 @@
           surround.enable = true;
 
           # general workflow
-          files.enable = true;
+          # files.enable = true;
 
           # appearance
           animate.enable = true;
@@ -213,6 +218,16 @@
             silent = true;
             action = "<cmd>Neotree toggle<CR>";
           }
+          ###
+          # oil-nvim
+          {
+            key = "<Leader>o";
+            mode = "n";
+            silent = true;
+            action = "<cmd>lua vim.cmd((vim.bo.filetype == 'oil') and 'bd' or 'Oil')<CR>";
+            description = "Toggle oil-nvim";
+          }
+
           ###
           # misc
           {
