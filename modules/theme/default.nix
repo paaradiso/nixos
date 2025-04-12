@@ -11,7 +11,7 @@
       ''
     ));
 
-  scheme = "danqing";
+  scheme = "darkmoss";
   schemePath = "${pkgs.base16-schemes}/share/themes/${scheme}.yaml";
   schemeData = importYAML schemePath;
 
