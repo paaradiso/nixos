@@ -30,6 +30,8 @@
   networking.hostName = host;
   networking.hostId = "fafafafa";
 
+  networking.firewall.allowedTCPPorts = [5201];
+
   services.flatpak.packages = ["sh.ppy.osu"];
   boot.blacklistedKernelModules = ["wacom"];
   hardware.opentabletdriver = {

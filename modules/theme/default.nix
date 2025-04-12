@@ -4,17 +4,29 @@
   # user,
   ...
 }: let
-  scheme = "mountain";
-  polarity = "dark";
+  importYAML = path:
+    builtins.fromJSON (builtins.readFile (
+      pkgs.runCommand "yaml-to-json.json" {nativeBuildInputs = [pkgs.yj];} ''
+        ${pkgs.yj}/bin/yj < ${path} > $out
+      ''
+    ));
+
+  scheme = "danqing";
+  schemePath = "${pkgs.base16-schemes}/share/themes/${scheme}.yaml";
+  schemeData = importYAML schemePath;
+
+  detectedPolarity = schemeData.variant or "dark";
+
+  cursorName = "phinger-cursors-${detectedPolarity}";
 in {
   stylix = {
     enable = true;
-    inherit polarity;
+    polarity = detectedPolarity;
     image = config.lib.stylix.pixel "base00";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/${scheme}.yaml";
+    base16Scheme = schemePath;
     cursor = {
       package = pkgs.phinger-cursors;
-      name = "phinger-cursors-dark";
+      name = cursorName;
       size = 32;
     };
     fonts = {
