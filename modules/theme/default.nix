@@ -11,7 +11,7 @@
       ''
     ));
 
-  scheme = "darkmoss";
+  scheme = "mountain";
   schemePath = "${pkgs.base16-schemes}/share/themes/${scheme}.yaml";
   schemeData = importYAML schemePath;
 

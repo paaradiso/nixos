@@ -34,5 +34,6 @@
     inputs.alejandra.defaultPackage.${system}
     kooha
     krita
+    zotero
   ];
 }
