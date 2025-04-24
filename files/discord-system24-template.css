@@ -130,7 +130,3 @@ body {
     --purple-4: #@base0E@;
     --purple-5: #@base0E@;
 }
-
-[class*='scrollerSpacer'] {
-    display: none;
-}
