@@ -73,6 +73,7 @@
                 inputs.nixcord.homeManagerModules.nixcord
               ];
               home-manager.extraSpecialArgs = {inherit user;};
+              home-manager.backupFileExtension = "backup";
             }
           ]
           ++ commonModules

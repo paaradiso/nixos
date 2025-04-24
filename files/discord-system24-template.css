@@ -1,0 +1,132 @@
+/**
+* @name system24
+* @description a tui-like discord theme.
+* @author refact0r
+* @version 2.0.0
+* @invite nz87hXyvcy
+* @website https://github.com/refact0r/system24
+* @source https://github.com/refact0r/system24/blob/master/theme/system24theme.css
+* @authorId 508863359777505290
+* @authorLink https://www.refact0r.dev
+*/
+/* import theme modules */
+@import url('https://refact0r.github.io/system24/build/system24.css');
+
+body {
+    --font: 'monospace';
+    --code-font: 'monospace';
+    font-weight: 300;
+    --gap: 12px;
+    --divider-thickness: 4px;
+    --border-thickness: 2px;
+    --border-hover-transition: 0.2s ease;
+    --animations: on;
+    --list-item-transition: 0.2s ease;
+    --dms-icon-svg-transition: 0.4s ease;
+    --top-bar-height: var(--gap);
+    --top-bar-button-position: titlebar;
+    --top-bar-title-position: off;
+    --subtle-top-bar-title: off;
+    --custom-window-controls: off;
+    --window-control-size: 14px;
+    --custom-dms-icon: off;
+    --dms-icon-svg-url: url('');
+    --dms-icon-svg-size: 90%;
+    --dms-icon-color-before: var(--bg-2);
+    --dms-icon-color-after: var(--bg-2);
+    --custom-dms-background: color;
+    --dms-background-image-url: url('');
+    --dms-background-image-size: cover;
+    --dms-background-color: linear-gradient(
+        135deg,
+        #@base08@ 14%,
+        #@base09@ 14%,
+        #@base09@ 28%,
+        #@base0A@ 28%,
+        #@base0A@ 42%,
+        #@base0B@ 42%,
+        #@base0B@ 56%,
+        #@base0C@ 56%,
+        #@base0C@ 70%,
+        #@base0D@ 70%,
+        #@base0D@ 84%,
+        #@base0E@ 84%
+    );
+    --background-image: off;
+    --background-image-url: url('');
+    --transparency-tweaks: off;
+    --remove-bg-layer: off;
+    --panel-blur: off;
+    --blur-amount: 12px;
+    --bg-floating: var(--bg-3);
+    --small-user-panel: on;
+    --unrounding: on;
+    --custom-spotify-bar: on;
+    --ascii-titles: on;
+    --ascii-loader: system24;
+    --panel-labels: on;
+    --label-color: var(--text-4);
+    --label-font-weight: 500;
+}
+
+:root {
+    --colors: on;
+    --text-0: var(--bg-3);
+    --text-1: #@base06@;
+    --text-2: #@base05@;
+    --text-3: #@base05@;
+    --text-4: #@base03@;
+    --text-5: #@base03@;
+    --bg-1: #@base03@;
+    --bg-2: #@base02@;
+    --bg-3: #@base01@;
+    --bg-4: #@base00@;
+    --hover: #@base03@1A;
+    --active: #@base03@33;
+    --active-2: #@base03@4D;
+    --message-hover: #@base00@1A;
+    --accent-1: var(--purple-1);
+    --accent-2: var(--purple-2);
+    --accent-3: var(--purple-3);
+    --accent-4: var(--purple-4);
+    --accent-5: var(--purple-5);
+    --accent-new: var(--red-3);
+    --mention: linear-gradient(to right, color-mix(in srgb, var(--accent-2), transparent 90%) 40%, transparent);
+    --mention-hover: linear-gradient(to right, color-mix(in srgb, var(--accent-2), transparent 95%) 40%, transparent);
+    --reply: linear-gradient(to right, color-mix(in srgb, var(--text-3), transparent 90%) 40%, transparent);
+    --reply-hover: linear-gradient(to right, color-mix(in srgb, var(--text-3), transparent 95%) 40%, transparent);
+    --online: var(--green-3);
+    --dnd: var(--red-3);
+    --idle: var(--yellow-3);
+    --streaming: var(--purple-3);
+    --offline: var(--text-4);
+    --border-light: var(--hover);
+    --border: var(--active);
+    --border-hover: var(--accent-2);
+    --button-border: hsla(0, 0%, 100%, 0.1);
+    --red-1: #@base08@;
+    --red-2: #@base08@;
+    --red-3: #@base08@;
+    --red-4: #@base08@;
+    --red-5: #@base08@;
+    --green-1: #@base0B@;
+    --green-2: #@base0B@;
+    --green-3: #@base0B@;
+    --green-4: #@base0B@;
+    --green-5: #@base0B@;
+    --blue-1: #@base0D@;
+    --blue-2: #@base0D@;
+    --blue-3: #@base0D@;
+    --blue-4: #@base0D@;
+    --blue-5: #@base0D@;
+    --yellow-1: #@base0A@;
+    --yellow-2: #@base0A@;
+    --yellow-3: #@base0A@;
+    --yellow-4: #@base0A@;
+    --yellow-5: #@base0A@;
+    --purple-1: #@base0E@;
+    --purple-2: #@base0E@;
+    --purple-3: #@base0E@;
+    --purple-4: #@base0E@;
+    --purple-5: #@base0E@;
+}
