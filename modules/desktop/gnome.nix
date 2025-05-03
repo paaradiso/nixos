@@ -29,6 +29,7 @@
   environment.systemPackages = with pkgs; [
     wl-clipboard
     mission-center
+    gnome-monitor-config
   ];
 
   home-manager.users.${user} = {

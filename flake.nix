@@ -24,6 +24,10 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixcord.url = "github:KaylorBen/nixcord";
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     nixpkgs,
@@ -60,7 +64,7 @@
     }:
       lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit inputs host user;};
+        specialArgs = {inherit system inputs host user;};
         modules =
           [
             (./hosts + "/${host}")

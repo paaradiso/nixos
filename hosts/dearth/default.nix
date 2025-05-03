@@ -5,6 +5,7 @@
     ../../modules/system/virtualisation.nix
     ../../modules/audio/easyeffects/akg_k371_brainwavz_oval.nix
     ../../modules/programs/steam.nix
+    ../../modules/programs/cs-toggle-res.nix
   ];
 
   boot.initrd.luks.devices = {
@@ -27,16 +28,14 @@
 
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["amdgpu"];
+  boot.kernelParams = ["module_blacklist=i915"];
 
   networking.hostName = host;
   networking.hostId = "fafafafa";
-
-  networking.firewall.allowedTCPPorts = [5201];
 
   services.flatpak.packages = ["sh.ppy.osu"];
   boot.blacklistedKernelModules = ["wacom"];
   hardware.opentabletdriver = {
     enable = true;
-    daemon.enable = true;
   };
 }
