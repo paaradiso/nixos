@@ -9,16 +9,30 @@ STRETCHED_MODE="1440x1080@119.925"
 SECONDARY_MODE="1920x1080@74.973"
 
 NATIVE_RES="${NATIVE_MODE%@*}"
-CURRENT_RES=$(gnome-monitor-config list | grep "PRIMARY" | cut -d " " -f 4 | cut -d '+' -f 1)
 
-if [[ "$CURRENT_RES" == "$NATIVE_RES" ]]; then
+set_stretched() {
   echo "Switching to stretched $STRETCHED_MODE..."
   gnome-monitor-config set \
     -LpM "$PRIMARY" -m "$STRETCHED_MODE" -t normal \
-    -LM "$SECONDARY" -m "$SECONDARY_MODE" -x 1440 -y 0 -t normal
-else
+    -LM "$SECONDARY" -m "$SECONDARY_MODE" -x ${STRETCHED_MODE%@x} -y 0 -t normal
+}
+
+set_native() {
   echo "Switching to native $NATIVE_MODE..."
   gnome-monitor-config set \
     -LpM "$PRIMARY" -m "$NATIVE_MODE" -t normal \
-    -LM "$SECONDARY" -m "$SECONDARY_MODE" -x 1920 -y 0 -t normal
+    -LM "$SECONDARY" -m "$SECONDARY_MODE" -x ${NATIVE_MODE%@x} -y 0 -t normal
+}
+
+if [[ "$1" == "stretch" ]]; then
+  set_stretched
+elif [[ "$1" == "native" ]]; then
+  set_native
+else
+  CURRENT_RES=$(gnome-monitor-config list | grep "PRIMARY" | cut -d " " -f 4 | cut -d '+' -f 1)
+  if [[ "$CURRENT_RES" == "$NATIVE_RES" ]]; then
+    set_stretched
+  else
+    set_native
+  fi
 fi
