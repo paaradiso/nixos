@@ -29,6 +29,7 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["amdgpu"];
   boot.kernelParams = ["module_blacklist=i915"];
+  programs.corectrl.enable = true;
 
   networking.hostName = host;
   networking.hostId = "fafafafa";
