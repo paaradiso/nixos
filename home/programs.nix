@@ -45,7 +45,7 @@ in {
         rb = "sudo nixos-rebuild switch";
         lg = "lazygit";
       };
-      initExtra = ''
+      initContent = ''
         autoload -Uz vcs_info
         precmd() {
           vcs_info

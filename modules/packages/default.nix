@@ -15,7 +15,6 @@
     htop
     ncdu
     git
-    # pre-commit
     lazygit
     bitwarden
     zsh
@@ -33,7 +32,6 @@
     inputs.agenix.packages.${system}.default
     inputs.alejandra.defaultPackage.${system}
     kooha
-    krita
     zotero
   ];
 }

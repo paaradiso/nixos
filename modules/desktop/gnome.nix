@@ -24,6 +24,12 @@
     epiphany # browser
     geary # email
     gnome-characters
+    gnome-maps
+    gnome-contacts
+    simple-scan
+    gnome-user-docs
+    gnome-system-monitor
+    yelp
   ];
 
   environment.systemPackages = with pkgs; [

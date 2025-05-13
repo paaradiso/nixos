@@ -74,7 +74,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.${user} = ./home;
               home-manager.sharedModules = [
-                inputs.nixcord.homeManagerModules.nixcord
+                inputs.nixcord.homeModules.nixcord
               ];
               home-manager.extraSpecialArgs = {inherit user;};
               home-manager.backupFileExtension = "backup";

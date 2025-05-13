@@ -22,6 +22,10 @@
           ts.enable = true;
         };
 
+        treesitter = {
+          context.enable = true;
+        };
+
         formatter = {
           conform-nvim = {
             enable = true;
