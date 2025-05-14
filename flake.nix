@@ -28,6 +28,10 @@
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     nixpkgs,
@@ -37,6 +41,7 @@
     nixos-hardware,
     agenix,
     nvf,
+    nix-index-database,
     ...
   }: let
     inherit (nixpkgs) lib;
@@ -75,6 +80,7 @@
               home-manager.users.${user} = ./home;
               home-manager.sharedModules = [
                 inputs.nixcord.homeModules.nixcord
+                nix-index-database.hmModules.nix-index
               ];
               home-manager.extraSpecialArgs = {inherit user;};
               home-manager.backupFileExtension = "backup";

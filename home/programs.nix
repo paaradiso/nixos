@@ -84,5 +84,8 @@ in {
       };
       discord.autoscroll.enable = true;
     };
+    nix-index.enable = true;
+    nix-index.enableZshIntegration = true;
+    nix-index-database.comma.enable = true;
   };
 }
