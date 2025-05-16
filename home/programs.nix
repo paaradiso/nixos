@@ -80,7 +80,7 @@ in {
       enable = true;
       quickCss = builtins.readFile discordStylixCss;
       config = {
-        useQuickCss = true; # Enable quick CSS
+        useQuickCss = true;
       };
       discord.autoscroll.enable = true;
     };
