@@ -5,8 +5,8 @@
   user,
   ...
 }: {
-  services.xserver = {
-    enable = true;
+  services = {
+    xserver.enable = true;
     displayManager.gdm = {
       enable = true;
       wayland = true;
@@ -47,6 +47,7 @@
       gnomeExtensions.just-perfection
       gnomeExtensions.rounded-window-corners-reborn
       gnomeExtensions.grand-theft-focus
+      gnomeExtensions.status-icons
     ];
 
     dconf = {

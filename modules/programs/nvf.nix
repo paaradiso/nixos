@@ -14,7 +14,6 @@
         };
 
         languages = {
-          enableLSP = true;
           enableTreesitter = true;
 
           nix.enable = true;
@@ -25,6 +24,10 @@
 
         treesitter = {
           context.enable = true;
+        };
+
+        lsp = {
+          enable = true;
         };
 
         formatter = {
