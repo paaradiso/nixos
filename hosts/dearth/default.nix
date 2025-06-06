@@ -1,4 +1,8 @@
-{host, ...}: {
+{
+  host,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -40,4 +44,13 @@
   hardware.opentabletdriver = {
     enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    mprime
+    phoronix-test-suite
+    stressapptest
+    hpl
+  ];
+
+  programs.corefreq.enable = true;
 }

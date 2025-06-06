@@ -23,6 +23,7 @@
     eza
     jellyfin-media-player
     inputs.zen-browser.packages.${system}.default
+    floorp
     helix
     ghostty
     feishin
@@ -33,5 +34,6 @@
     inputs.alejandra.defaultPackage.${system}
     kooha
     zotero
+    thunderbird
   ];
 }

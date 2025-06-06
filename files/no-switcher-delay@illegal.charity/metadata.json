@@ -2,7 +2,7 @@
     "name": "No Switcher Delay",
     "description": "Removes switcher popup delay in GNOME Shell",
     "uuid": "no-switcher-delay@illegal.charity",
-    "shell-version": ["47"],
+    "shell-version": ["47", "48.1"],
     "version": 1
 }
 

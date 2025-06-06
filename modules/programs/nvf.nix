@@ -20,6 +20,7 @@
           nix.enable = true;
           java.enable = true;
           ts.enable = true;
+          svelte.enable = true;
         };
 
         treesitter = {
