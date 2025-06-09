@@ -43,6 +43,7 @@
   boot.blacklistedKernelModules = ["wacom"];
   hardware.opentabletdriver = {
     enable = true;
+    daemon.enable = false;
   };
 
   environment.systemPackages = with pkgs; [
