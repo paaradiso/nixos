@@ -24,10 +24,6 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixcord.url = "github:KaylorBen/nixcord";
-    winapps = {
-      url = "github:winapps-org/winapps";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,10 +58,15 @@
       nvf.nixosModules.default
     ];
 
+    hmSharedModules = [
+      inputs.nixcord.homeModules.nixcord
+      nix-index-database.hmModules.nix-index
+    ];
+
     mkNixosSystem = {
       host,
       system ? "x86_64-linux",
-      extraModules ? [],
+      useCommonModules ? true,
     }:
       lib.nixosSystem {
         inherit system;
@@ -78,28 +79,26 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${user} = ./home;
-              home-manager.sharedModules = [
-                inputs.nixcord.homeModules.nixcord
-                nix-index-database.hmModules.nix-index
-              ];
+              home-manager.sharedModules = lib.optionals useCommonModules hmSharedModules;
               home-manager.extraSpecialArgs = {inherit user;};
               home-manager.backupFileExtension = "backup";
             }
           ]
-          ++ commonModules
-          ++ extraModules;
+          ++ lib.optionals useCommonModules commonModules;
       };
   in {
     formatter.x86_64-linux = inputs.alejandra.defaultPackage.x86_64-linux;
 
     nixosConfigurations.utopia = mkNixosSystem {
       host = "utopia";
-      extraModules = [nixos-hardware.nixosModules.dell-xps-13-9360];
     };
     nixosConfigurations.phosphene = mkNixosSystem {
       host = "phosphene";
-      extraModules = [nixos-hardware.nixosModules.lenovo-thinkpad-t490s];
     };
     nixosConfigurations.dearth = mkNixosSystem {host = "dearth";};
+    nixosConfigurations.synarchy = mkNixosSystem {
+      host = "synarchy";
+      useCommonModules = false;
+    };
   };
 }

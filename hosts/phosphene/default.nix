@@ -7,6 +7,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490s
   ];
 
   boot.initrd.luks.devices = {
