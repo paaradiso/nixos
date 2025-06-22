@@ -66,7 +66,7 @@
     mkNixosSystem = {
       host,
       system ? "x86_64-linux",
-      useCommonModules ? true,
+      personalSystem ? true,
     }:
       lib.nixosSystem {
         inherit system;
@@ -74,17 +74,19 @@
         modules =
           [
             (./hosts + "/${host}")
+          ]
+          ++ lib.optionals personalSystem [
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${user} = ./home;
-              home-manager.sharedModules = lib.optionals useCommonModules hmSharedModules;
+              home-manager.sharedModules = lib.optionals personalSystem hmSharedModules;
               home-manager.extraSpecialArgs = {inherit user;};
               home-manager.backupFileExtension = "backup";
             }
           ]
-          ++ lib.optionals useCommonModules commonModules;
+          ++ lib.optionals personalSystem commonModules;
       };
   in {
     formatter.x86_64-linux = inputs.alejandra.defaultPackage.x86_64-linux;
@@ -98,7 +100,7 @@
     nixosConfigurations.dearth = mkNixosSystem {host = "dearth";};
     nixosConfigurations.synarchy = mkNixosSystem {
       host = "synarchy";
-      useCommonModules = false;
+      personalSystem = false;
     };
   };
 }
