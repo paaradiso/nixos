@@ -9,7 +9,7 @@
     [
       ./hardware-configuration.nix
       
-      (import ../../modules/core/boot.nix { inherit lib; isEncrypted = false; })
+      ../../modules/core/boot.nix
       ../../modules/core/users.nix
     ];
 
