@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
 
     ../../modules/system/virtualisation.nix
-    ../../modules/audio/easyeffects/akg_k371_brainwavz_oval.nix
+    ../../modules/audio/easyeffects/flat.nix
     ../../modules/programs/steam.nix
     ../../modules/programs/cs-toggle-res.nix
     ../../modules/misc/webcam.nix
