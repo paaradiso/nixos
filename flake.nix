@@ -81,7 +81,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${user} = ./home;
-              home-manager.sharedModules = lib.optionals personalSystem hmSharedModules;
+              home-manager.sharedModules = hmSharedModules;
               home-manager.extraSpecialArgs = {inherit user;};
               home-manager.backupFileExtension = "backup";
             }

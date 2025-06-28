@@ -1,3 +1,5 @@
+{ lib, isEncrypted ? true, ... }:
+
 {
   boot = {
     loader = {
@@ -5,8 +7,6 @@
       efi.canTouchEfiVariables = true;
       timeout = 0;
     };
-    initrd.systemd.enable = true; # Required for plymouth to show password prompt for LUKS
-    plymouth.enable = true;
     consoleLogLevel = 0;
     kernelParams = [
       "quiet"
@@ -17,5 +17,8 @@
       "rd.udev.log_level=3"
       "udev.log_priority=3"
     ];
+  } // lib.mkIf isEncrypted { 
+    initrd.systemd.enable = true; # Required for plymouth to show password prompt for LUKS
+    plymouth.enable = true;
   };
 }
