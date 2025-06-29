@@ -51,6 +51,7 @@
       ./modules/packages
       agenix.nixosModules.default
       nvf.nixosModules.default
+      stylix.nixosModules.stylix
     ];
 
     personalSystemCommonModules = [
@@ -60,7 +61,6 @@
       ./modules/programs
       ./modules/desktop/gnome.nix
       nix-flatpak.nixosModules.nix-flatpak
-      stylix.nixosModules.stylix
     ];
 
     hmSharedModules = [
