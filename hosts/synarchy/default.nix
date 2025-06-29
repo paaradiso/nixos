@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
 
     inputs.quadlet-nix.nixosModules.quadlet
+    ./podman
 
     ../../modules/core/boot.nix
     ../../modules/core/users.nix
@@ -37,6 +38,18 @@
   users.users.${user} = {
     uid = 101000;
     group = user;
+    subUidRanges = [
+      {
+        startUid = 200000;
+        count = 65536;
+      }
+    ];
+    subGidRanges = [
+      {
+        startGid = 200000;
+        count = 65536;
+      }
+    ];
   };
 
   users.groups.${user}.gid = 101000;
