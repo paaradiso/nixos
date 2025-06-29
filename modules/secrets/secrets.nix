@@ -8,6 +8,4 @@ let
   ];
 in {
   "git_key.age".publicKeys = keys;
-  "home_wg.age".publicKeys = keys;
-  "test.age".publicKeys = keys;
 }

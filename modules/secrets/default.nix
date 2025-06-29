@@ -1,5 +1,5 @@
 {user, ...}: {
-  age.identityPaths = ["~/.ssh/id_ed25519" "/etc/ssh/ssh_host_ed25519_key"];
+  age.identityPaths = ["/home/${user}/.ssh/id_ed25519" "/etc/ssh/ssh_host_ed25519_key"];
   age.secrets.git_key = {
     file = ./git_key.age;
     path = "/home/${user}/.ssh/git_key";
@@ -8,5 +8,4 @@
     owner = user;
     group = "users";
   };
-  age.secrets.home_wg.file = ./home_wg.age;
 }
