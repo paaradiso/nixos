@@ -1,6 +1,13 @@
-{host, ...}: {
+{
+  host,
+  user,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
+
+    inputs.quadlet-nix.nixosModules.quadlet
 
     ../../modules/core/boot.nix
     ../../modules/core/users.nix
@@ -22,8 +29,17 @@
       }
     ];
     defaultGateway = "10.1.1.1";
-    nameservers = "10.1.1.1";
+    nameservers = ["10.1.1.1"];
   };
+
+  services.openssh.permitRootLogin = "yes";
+
+  users.users.${user} = {
+    uid = 101000;
+    group = user;
+  };
+
+  users.groups.${user}.gid = 101000;
 
   system.stateVersion = "25.05";
 }
