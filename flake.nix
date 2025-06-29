@@ -47,6 +47,7 @@
     commonModules = [
       ./modules/core
       ./modules/secrets
+      ./modules/services
       agenix.nixosModules.default
       nvf.nixosModules.default
     ];
@@ -84,12 +85,15 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${user} = if personalSystem then ./home else ./hosts + "/${host}/home";
+              home-manager.users.${user} =
+                if personalSystem
+                then ./home
+                else ./hosts + "/${host}/home";
               home-manager.sharedModules = hmSharedModules ++ lib.optionals personalSystem hmPersonalSystemSharedModules;
               home-manager.extraSpecialArgs = {inherit user;};
               home-manager.backupFileExtension = "backup";
             }
-          ] 
+          ]
           ++ commonModules
           ++ lib.optionals personalSystem personalSystemCommonModules;
       };
