@@ -48,12 +48,13 @@
       ./modules/core
       ./modules/secrets
       ./modules/services
+      ./modules/packages
       agenix.nixosModules.default
       nvf.nixosModules.default
     ];
 
     personalSystemCommonModules = [
-      ./modules/packages
+      ./modules/packages/personal-system.nix
       ./modules/flatpak
       ./modules/theme
       ./modules/programs
