@@ -12,6 +12,7 @@
       ../../modules/core/boot.nix
       ../../modules/core/users.nix
       ../../modules/core/nix.nix
+      ../../modules/secrets
     ];
 
   boot.loader.grub.enable = false;
@@ -32,8 +33,6 @@
   ];
 
   services.openssh.enable = true;
-
   system.stateVersion = "25.05";
-
 }
 

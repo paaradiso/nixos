@@ -45,22 +45,28 @@
     user = "alpha"; ### IF YOU CHANGE THIS, ALSO CHANGE THE ZFS DATASET NAME AND MOUNTPOINT!
 
     commonModules = [
-      ./modules/packages
-      ./modules/flatpak
-      ./modules/theme
       ./modules/core
       ./modules/secrets
-      ./modules/programs
-      ./modules/desktop/gnome.nix
-      nix-flatpak.nixosModules.nix-flatpak
       agenix.nixosModules.default
-      stylix.nixosModules.stylix
       nvf.nixosModules.default
     ];
 
+    personalSystemCommonModules = [
+      ./modules/packages
+      ./modules/flatpak
+      ./modules/theme
+      ./modules/programs
+      ./modules/desktop/gnome.nix
+      nix-flatpak.nixosModules.nix-flatpak
+      stylix.nixosModules.stylix
+    ];
+
     hmSharedModules = [
-      inputs.nixcord.homeModules.nixcord
       nix-index-database.hmModules.nix-index
+    ];
+
+    hmPersonalSystemSharedModules = [
+      inputs.nixcord.homeModules.nixcord
     ];
 
     mkNixosSystem = {
@@ -74,19 +80,18 @@
         modules =
           [
             (./hosts + "/${host}")
-          ]
-          ++ lib.optionals personalSystem [
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${user} = ./home;
-              home-manager.sharedModules = hmSharedModules;
+              home-manager.users.${user} = if personalSystem then ./home else ./hosts + "/${host}/home";
+              home-manager.sharedModules = hmSharedModules ++ lib.optionals personalSystem hmPersonalSystemSharedModules;
               home-manager.extraSpecialArgs = {inherit user;};
               home-manager.backupFileExtension = "backup";
             }
-          ]
-          ++ lib.optionals personalSystem commonModules;
+          ] 
+          ++ commonModules
+          ++ lib.optionals personalSystem personalSystemCommonModules;
       };
   in {
     formatter.x86_64-linux = inputs.alejandra.defaultPackage.x86_64-linux;

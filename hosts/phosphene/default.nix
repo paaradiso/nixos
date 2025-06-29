@@ -29,4 +29,6 @@
 
   networking.hostName = host;
   networking.hostId = "feedaaaa";
+
+  system.stateVersion = "24.11";
 }

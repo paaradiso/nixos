@@ -18,6 +18,4 @@
   console.keyMap = "us";
   time.timeZone = "Australia/Adelaide";
   nixpkgs.config.allowUnfree = true;
-
-  system.stateVersion = "24.11";
 }

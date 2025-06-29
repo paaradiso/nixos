@@ -2,6 +2,7 @@ let
   keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEDy1PeU5A7Y1Wkp+rWUiIsB3ZhNZHqNLiLtgwNLfIEt root@dearth"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILoVuWfkMp3gOTKO0Q8QREy78uzf3V/vhCQh5IT0kLl9 root@phosphene"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2P8/nbOzy5vpo8Y2RUMxfkd/6aAd25cceO9qjVWCdx root@synarchy"
   ];
 in {
   "git_key.age".publicKeys = keys;
