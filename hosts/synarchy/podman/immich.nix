@@ -11,14 +11,12 @@ in {
         "/mnt/data/apps/data/podman/immich/photos:/photos"
         "/mnt/data/apps/data/podman/immich/config:/config"
       ];
-      devices = [
-        "/dev/dri"
-      ];
+      devices = ["/dev/dri"];
       environments = {
         PUID = "101000";
         PGID = "101000";
         TZ = "Australia/Adelaide";
-        DB_HOSTNAME = "10.1.1.30";
+        DB_HOSTNAME = "postgresql";
         DB_USERNAME = "immich_user";
         DB_DATABASE_NAME = "immich_db";
         REDIS_HOSTNAME = "redis";

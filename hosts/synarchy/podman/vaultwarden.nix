@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   inherit (config.virtualisation.quadlet) networks;
   port = "8091";
 in {

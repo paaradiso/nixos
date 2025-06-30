@@ -2,6 +2,7 @@
   imports = [
     ./audiobookrequest.nix
     ./bazarr.nix
+    ./jellyseerr.nix
     ./prowlarr.nix
     ./radarr.nix
     ./sonarr.nix
@@ -12,11 +13,15 @@
     ./open-webui.nix
     ./tika.nix
 
+    ./jellyfin.nix
+    ./audiobookshelf.nix
     ./immich.nix
 
+    ./postgresql.nix
     ./redis.nix
 
     ./authelia.nix
+    ./lldap.nix
     ./vaultwarden.nix
   ];
 

@@ -14,4 +14,6 @@ in {
   "podman_vaultwarden_env.age".publicKeys = serverKeys;
   "podman_redis_env.age".publicKeys = serverKeys;
   "podman_immich_env.age".publicKeys = serverKeys;
+  "podman_jellyseerr_env.age".publicKeys = serverKeys;
+  "podman_postgresql_env.age".publicKeys = serverKeys;
 }

@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   inherit (config.virtualisation.quadlet) networks;
 in {
   virtualisation.quadlet.containers.qbittorrent = {
