@@ -13,4 +13,5 @@ in {
   "git_key.age".publicKeys = allKeys;
   "podman_vaultwarden_env.age".publicKeys = serverKeys;
   "podman_redis_env.age".publicKeys = serverKeys;
+  "podman_immich_env.age".publicKeys = serverKeys;
 }
