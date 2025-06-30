@@ -1,13 +1,9 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./audiobookrequest.nix
-    # ./open-webui.nix
+    ./open-webui.nix
     ./qbittorrent.nix
+    ./tika.nix
     ./vaultwarden.nix
   ];
 
