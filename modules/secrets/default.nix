@@ -9,6 +9,5 @@
       owner = user;
       group = "users";
     };
-    podman_vaultwarden_env.file = ./podman_vaultwarden_env.age;
   };
 }

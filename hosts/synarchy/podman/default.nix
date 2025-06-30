@@ -1,13 +1,22 @@
-{config, ...}: {
+{
   imports = [
     ./audiobookrequest.nix
-    ./open-webui.nix
+    ./bazarr.nix
+    ./prowlarr.nix
+    ./radarr.nix
+    ./sonarr.nix
+
     ./qbittorrent.nix
+
+    ./open-webui.nix
     ./tika.nix
+
+    ./redis.nix
+
     ./vaultwarden.nix
   ];
 
-  config.virtualisation.quadlet = {
+  virtualisation.quadlet = {
     autoUpdate.enable = true;
     networks.internal = {
     };

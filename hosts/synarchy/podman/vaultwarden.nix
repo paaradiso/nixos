@@ -7,6 +7,8 @@
   inherit (config.virtualisation.quadlet) networks;
   port = "8091";
 in {
+  age.secrets.podman_vaultwarden_env.file = ../../../modules/secrets/podman_vaultwarden_env.age;
+
   virtualisation.quadlet.containers.vaultwarden = {
     containerConfig = {
       image = "docker.io/vaultwarden/server:latest";
