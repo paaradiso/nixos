@@ -9,6 +9,7 @@ in {
       volumes = [
         "/mnt/data/apps/data/podman/audiobookshelf/config:/usr/share/audiobookshelf/config"
         "/mnt/data/apps/data/podman/audiobookshelf/metadata:/usr/share/audiobookshelf/metadata"
+        "/mnt/data/media/library:/data/media/library"
       ];
       environments = {
         PORT = "4000";

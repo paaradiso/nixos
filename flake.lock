@@ -714,6 +714,7 @@
         "nixpkgs": "nixpkgs_2",
         "nvf": "nvf",
         "quadlet-nix": "quadlet-nix",
+        "secrets": "secrets",
         "stylix": "stylix",
         "zen-browser": "zen-browser"
       }
@@ -733,6 +734,22 @@
         "ref": "nightly",
         "repo": "rust-analyzer",
         "type": "github"
+      }
+    },
+    "secrets": {
+      "locked": {
+        "lastModified": 1751376217,
+        "narHash": "sha256-wDM9XqS7SeOt5YE6jpAR1EcHdU+guRSISrTcTI7tOSU=",
+        "ref": "main",
+        "rev": "7d0910afe9f5eab55c78ed02019530452e922582",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/paaradiso/nixos-secrets.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/paaradiso/nixos-secrets.git"
       }
     },
     "stylix": {

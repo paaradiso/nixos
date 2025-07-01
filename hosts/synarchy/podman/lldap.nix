@@ -4,7 +4,7 @@ in {
   virtualisation.quadlet.containers.lldap = {
     containerConfig = {
       image = "docker.io/lldap/lldap:stable";
-      publishPorts = ["3890:3890"];
+      publishPorts = ["3890:3890" "17170:17170"];
       volumes = [
         "/mnt/data/apps/data/podman/lldap:/data"
       ];

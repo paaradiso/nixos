@@ -11,6 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.darwin.follows = "";
     };
+    secrets.url = "git+ssh://git@github.com/paaradiso/nixos-secrets.git?ref=main";
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,9 +48,10 @@
 
     commonModules = [
       ./modules/core
+      ./modules/packages
       ./modules/secrets
       ./modules/services
-      ./modules/packages
+      ./modules/theme
       agenix.nixosModules.default
       nvf.nixosModules.default
       stylix.nixosModules.stylix
@@ -58,7 +60,6 @@
     personalSystemCommonModules = [
       ./modules/packages/personal-system.nix
       ./modules/flatpak
-      ./modules/theme
       ./modules/programs
       ./modules/desktop/gnome.nix
       nix-flatpak.nixosModules.nix-flatpak
@@ -79,7 +80,10 @@
     }:
       lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit system inputs host user;};
+        specialArgs = {
+          inherit system inputs host user;
+          secrets = inputs.secrets.config;
+        };
         modules =
           [
             (./hosts + "/${host}")
@@ -92,7 +96,10 @@
                 then ./home
                 else ./hosts + "/${host}/home";
               home-manager.sharedModules = hmSharedModules ++ lib.optionals personalSystem hmPersonalSystemSharedModules;
-              home-manager.extraSpecialArgs = {inherit user;};
+              home-manager.extraSpecialArgs = {
+                inherit user;
+                secrets = inputs.secrets.config;
+              };
               home-manager.backupFileExtension = "backup";
             }
           ]

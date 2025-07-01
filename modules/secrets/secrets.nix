@@ -11,9 +11,11 @@ let
   allKeys = personalSystemKeys ++ serverKeys;
 in {
   "git_key.age".publicKeys = allKeys;
+  "caddy_env.age".publicKeys = serverKeys;
   "podman_vaultwarden_env.age".publicKeys = serverKeys;
   "podman_redis_env.age".publicKeys = serverKeys;
   "podman_immich_env.age".publicKeys = serverKeys;
   "podman_jellyseerr_env.age".publicKeys = serverKeys;
   "podman_postgresql_env.age".publicKeys = serverKeys;
+  "podman_outline_env.age".publicKeys = serverKeys;
 }

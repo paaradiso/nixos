@@ -3,8 +3,7 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   programs = {
     git = {
       enable = true;
@@ -24,7 +23,7 @@
       shellAliases = {
         ls = "eza -la --group";
         cd = "z";
-        rb = "sudo nixos-rebuild switch";
+        rb = "sudo --preserve-env=SSH_AUTH_SOCK nixos-rebuild switch";
         lg = "lazygit";
       };
       initContent = ''

@@ -1,6 +1,5 @@
 {
   imports = [
-    ./audiobookrequest.nix
     ./bazarr.nix
     ./jellyseerr.nix
     ./prowlarr.nix
@@ -16,6 +15,7 @@
     ./jellyfin.nix
     ./audiobookshelf.nix
     ./immich.nix
+    ./outline.nix
 
     ./postgresql.nix
     ./redis.nix

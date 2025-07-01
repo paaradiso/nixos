@@ -10,6 +10,8 @@
     inputs.quadlet-nix.nixosModules.quadlet
     ./podman
 
+    ./modules
+
     ../../modules/core/boot.nix
     ../../modules/core/users.nix
     ../../modules/core/nix.nix
