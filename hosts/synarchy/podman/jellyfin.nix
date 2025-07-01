@@ -1,16 +1,19 @@
 {
   config,
   pkgs,
+  secrets,
   ...
 }: let
   inherit (config.virtualisation.quadlet) networks;
+  internalPort = "8096";
+  externalPort = internalPort;
 in {
   virtualisation.quadlet.containers.jellyfin = {
     containerConfig = {
       image = "docker.io/jellyfin/jellyfin:latest";
       user = "101000:101000";
       addGroups = ["303"];
-      publishPorts = ["8096:8096"];
+      publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/data/apps/data/podman/jellyfin:/config"
         "/mnt/data/media:/data/media"
@@ -26,6 +29,19 @@ in {
       networks = [networks.internal.ref];
     };
   };
+
+  services.caddy.wildcardServices.jellyfin = ''
+    @media host media.${secrets.domain}
+    handle @media {
+      reverse_proxy localhost:${externalPort}
+    }
+  '';
+  services.caddy.wildcardLanServices.jellyfin = ''
+    @media host media.lan.${secrets.domain}
+    handle @media {
+      reverse_proxy localhost:${externalPort}
+    }
+  '';
 
   hardware.opengl = {
     enable = true;

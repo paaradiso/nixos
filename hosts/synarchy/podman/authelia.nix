@@ -1,10 +1,16 @@
-{config, ...}: let
+{
+  config,
+  secrets,
+  ...
+}: let
   inherit (config.virtualisation.quadlet) networks;
+  internalPort = "9091";
+  externalPort = internalPort;
 in {
   virtualisation.quadlet.containers.authelia = {
     containerConfig = {
       image = "docker.io/authelia/authelia:latest";
-      publishPorts = ["9091:9091"];
+      publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/data/apps/data/podman/authelia:/config"
       ];
@@ -15,4 +21,11 @@ in {
       networks = [networks.internal.ref];
     };
   };
+
+  services.caddy.wildcardServices.authelia = ''
+    @auth host auth.${secrets.domain}
+    handle @auth {
+      reverse_proxy localhost:${externalPort}
+    }
+  '';
 }

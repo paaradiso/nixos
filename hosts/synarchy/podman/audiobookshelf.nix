@@ -1,10 +1,16 @@
-{config, ...}: let
+{
+  config,
+  secrets,
+  ...
+}: let
   inherit (config.virtualisation.quadlet) networks;
+  internalPort = "4000";
+  externalPort = internalPort;
 in {
   virtualisation.quadlet.containers.audiobookshelf = {
     containerConfig = {
       image = "ghcr.io/advplyr/audiobookshelf:latest";
-      publishPorts = ["4000:4000"];
+      publishPorts = ["${externalPort}:${internalPort}"];
       user = "101000:101000";
       volumes = [
         "/mnt/data/apps/data/podman/audiobookshelf/config:/usr/share/audiobookshelf/config"
@@ -12,7 +18,7 @@ in {
         "/mnt/data/media/library:/data/media/library"
       ];
       environments = {
-        PORT = "4000";
+        PORT = internalPort;
         HOST = "0.0.0.0";
         CONFIG_PATH = "/usr/share/audiobookshelf/config";
         METADATA_PATH = "/usr/share/audiobookshelf/metadata";
@@ -20,4 +26,11 @@ in {
       networks = [networks.internal.ref];
     };
   };
+
+  services.caddy.wildcardServices.audiobookshelf = ''
+    @abs host abs.${secrets.domain}
+    handle @abs {
+      reverse_proxy localhost:${externalPort}
+    }
+  '';
 }
