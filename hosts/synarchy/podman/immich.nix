@@ -1,12 +1,18 @@
-{config, ...}: let
+{
+  config,
+  secrets,
+  ...
+}: let
   inherit (config.virtualisation.quadlet) networks;
+  internalPort = "8080";
+  externalPort = "8082";
 in {
   age.secrets.podman_immich_env.file = ../../../modules/secrets/podman_immich_env.age;
 
   virtualisation.quadlet.containers.immich = {
     containerConfig = {
       image = "ghcr.io/imagegenius/immich:latest";
-      publishPorts = ["8082:8080"];
+      publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/data/apps/data/podman/immich/photos:/photos"
         "/mnt/data/apps/data/podman/immich/config:/config"
@@ -25,4 +31,10 @@ in {
       networks = [networks.internal.ref];
     };
   };
+  services.caddy.virtualHosts."immich.${secrets.domain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
+  '';
+  services.caddy.virtualHosts."immich.lan.${secrets.domain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
+  '';
 }

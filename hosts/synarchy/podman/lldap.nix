@@ -1,10 +1,16 @@
-{config, ...}: let
+{
+  config,
+  secrets,
+  ...
+}: let
   inherit (config.virtualisation.quadlet) networks;
+  internalPort = "17170";
+  externalPort = internalPort;
 in {
   virtualisation.quadlet.containers.lldap = {
     containerConfig = {
       image = "docker.io/lldap/lldap:stable";
-      publishPorts = ["3890:3890" "17170:17170"];
+      publishPorts = ["3890:3890" "${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/data/apps/data/podman/lldap:/data"
       ];
@@ -16,4 +22,7 @@ in {
       networks = [networks.internal.ref];
     };
   };
+  services.caddy.virtualHosts."ldap.${secrets.domain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
+  '';
 }

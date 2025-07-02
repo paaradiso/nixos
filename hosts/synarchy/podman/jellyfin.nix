@@ -30,20 +30,14 @@ in {
     };
   };
 
-  services.caddy.wildcardServices.jellyfin = ''
-    @media host media.${secrets.domain}
-    handle @media {
-      reverse_proxy localhost:${externalPort}
-    }
+  services.caddy.virtualHosts."media.${secrets.domain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
   '';
-  services.caddy.wildcardLanServices.jellyfin = ''
-    @media host media.lan.${secrets.domain}
-    handle @media {
-      reverse_proxy localhost:${externalPort}
-    }
+  services.caddy.virtualHosts."media.lan.${secrets.domain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
   '';
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver

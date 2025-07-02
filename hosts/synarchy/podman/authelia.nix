@@ -22,10 +22,7 @@ in {
     };
   };
 
-  services.caddy.wildcardServices.authelia = ''
-    @auth host auth.${secrets.domain}
-    handle @auth {
-      reverse_proxy localhost:${externalPort}
-    }
+  services.caddy.virtualHosts."auth.${secrets.domain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
   '';
 }

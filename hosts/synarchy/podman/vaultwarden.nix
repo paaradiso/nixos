@@ -25,21 +25,15 @@ in {
     };
   };
 
-  services.caddy.wildcardServices.vaultwarden = ''
-    @vault host vault.${secrets.domain}
-    handle @vault {
-      handle /admin* {
-        respond 403
-      }
-      handle {
-        reverse_proxy localhost:${externalPort}
-      }
+  services.caddy.virtualHosts."vault.${secrets.domain}".extraConfig = ''
+    handle /admin* {
+      respond 403
     }
-  '';
-  services.caddy.wildcardLanServices.vaultwarden = ''
-    @vault host vault.lan.${secrets.domain}
-    handle @vault {
+    handle {
       reverse_proxy localhost:${externalPort}
     }
+  '';
+  services.caddy.virtualHosts."vault.lan.${secrets.domain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
   '';
 }

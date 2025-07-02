@@ -1,5 +1,11 @@
-{config, ...}: let
+{
+  config,
+  secrets,
+  ...
+}: let
   inherit (config.virtualisation.quadlet) networks;
+  internalPort = "5055";
+  externalPort = internalPort;
 in {
   age.secrets.podman_jellyseerr_env.file = ../../../modules/secrets/podman_jellyseerr_env.age;
 
@@ -7,14 +13,14 @@ in {
     containerConfig = {
       image = "docker.io/fallenbagel/jellyseerr:latest";
       user = "101000:101000";
-      publishPorts = ["5055:5055"];
+      publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/data/apps/data/podman/jellyseerr:/app/config"
       ];
       environments = {
         LOG_LEVEL = "debug";
         TZ = "Australia/Adelaide";
-        Port = "5055";
+        Port = internalPort;
         DB_TYPE = "postgres";
         DB_HOST = "postgresql";
         DB_USER = "jellyseerr_user";
@@ -24,4 +30,7 @@ in {
       networks = [networks.internal.ref];
     };
   };
+  services.caddy.virtualHosts."request.${secrets.domain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
+  '';
 }

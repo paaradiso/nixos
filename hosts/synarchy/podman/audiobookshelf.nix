@@ -27,10 +27,7 @@ in {
     };
   };
 
-  services.caddy.wildcardServices.audiobookshelf = ''
-    @abs host abs.${secrets.domain}
-    handle @abs {
-      reverse_proxy localhost:${externalPort}
-    }
+  services.caddy.virtualHosts."abs.${secrets.domain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
   '';
 }

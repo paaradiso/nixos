@@ -1,11 +1,16 @@
-{config, ...}: let
+{
+  config,
+  secrets,
+  ...
+}: let
   inherit (config.virtualisation.quadlet) networks;
-  port = "8080";
+  internalPort = "8080";
+  externalPort = internalPort;
 in {
   virtualisation.quadlet.containers.open-webui = {
     containerConfig = {
       image = "ghcr.io/open-webui/open-webui:ollama";
-      publishPorts = ["${port}:${port}"];
+      publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/data/apps/data/podman/open-webui:/app/backend/data"
         "/mnt/data/apps/data/podman/ollama:/root/.ollama"
@@ -18,4 +23,10 @@ in {
       networks = [networks.internal.ref];
     };
   };
+  services.caddy.virtualHosts."ai.${secrets.domain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
+  '';
+  services.caddy.virtualHosts."ai.lan.${secrets.domain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
+  '';
 }

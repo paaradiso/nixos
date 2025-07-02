@@ -6,17 +6,17 @@
   ...
 }:
 with lib; {
-  options.services.caddy.wildcardServices = mkOption {
-    type = types.attrsOf types.str;
-    default = {};
-    description = "Attribute set of service configurations for the wildcard domain block";
-  };
+  # options.services.caddy.wildcardServices = mkOption {
+  #   type = types.attrsOf types.str;
+  #   default = {};
+  #   description = "Attribute set of service configurations for the wildcard domain block";
+  # };
 
-  options.services.caddy.wildcardLanServices = mkOption {
-    type = types.attrsOf types.str;
-    default = {};
-    description = "Attribute set of service configurations for the LAN wildcard domain block";
-  };
+  # options.services.caddy.wildcardLanServices = mkOption {
+  #   type = types.attrsOf types.str;
+  #   default = {};
+  #   description = "Attribute set of service configurations for the LAN wildcard domain block";
+  # };
 
   config = {
     age.secrets.caddy_env.file = ../../../modules/secrets/caddy_env.age;
@@ -60,7 +60,7 @@ with lib; {
         *.${secrets.domain} {
           import cloudflare
 
-          ${builtins.concatStringsSep "\n" (builtins.attrValues config.services.caddy.wildcardServices)}
+          # ''${builtins.concatStringsSep "\n" (builtins.attrValues config.services.caddy.wildcardServices)}
 
           handle {
             abort
@@ -70,11 +70,17 @@ with lib; {
         *.lan.${secrets.domain} {
           import cloudflare
 
-          ${builtins.concatStringsSep "\n" (builtins.attrValues config.services.caddy.wildcardLanServices)}
+          # ''${builtins.concatStringsSep "\n" (builtins.attrValues config.services.caddy.wildcardLanServices)}
 
           handle {
             abort
           }
+        }
+
+        uptime.lan.${secrets.domain} {
+          import cloudflare
+
+          reverse_proxy 10.1.40.3:3001
         }
       '';
     };
