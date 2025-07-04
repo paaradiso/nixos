@@ -19,6 +19,7 @@ in {
     };
   };
   services.caddy.virtualHosts."prowlarr.lan.${secrets.domain}".extraConfig = ''
+    import private
     reverse_proxy localhost:${externalPort}
   '';
 }

@@ -5,7 +5,7 @@
 }: let
   inherit (config.virtualisation.quadlet) networks;
   internalPort = "7878";
-  externalPort = "7878";
+  externalPort = internalPort;
 in {
   virtualisation.quadlet.containers.radarr = {
     containerConfig = {
@@ -20,6 +20,7 @@ in {
     };
   };
   services.caddy.virtualHosts."radarr.lan.${secrets.domain}".extraConfig = ''
+    import private
     reverse_proxy localhost:${externalPort}
   '';
 }

@@ -34,6 +34,7 @@ in {
     reverse_proxy localhost:${externalPort}
   '';
   services.caddy.virtualHosts."media.lan.${secrets.domain}".extraConfig = ''
+    import private
     reverse_proxy localhost:${externalPort}
   '';
 

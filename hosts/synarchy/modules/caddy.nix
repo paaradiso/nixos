@@ -76,13 +76,18 @@ with lib; {
             abort
           }
         }
-
-        uptime.lan.${secrets.domain} {
-          import cloudflare
-
-          reverse_proxy 10.1.40.3:3001
-        }
       '';
+
+      virtualHosts = {
+        "ha.lan.${secrets.domain}".extraConfig = ''
+          import private
+          reverse_proxy 10.1.1.20:8123
+        '';
+        "uptime.lan.${secrets.domain}".extraConfig = ''
+          import private
+          reverse_proxy 10.1.40.3:3001
+        '';
+      };
     };
   };
 }

@@ -27,6 +27,7 @@ in {
     reverse_proxy localhost:${externalPort}
   '';
   services.caddy.virtualHosts."ai.lan.${secrets.domain}".extraConfig = ''
+    import private
     reverse_proxy localhost:${externalPort}
   '';
 }

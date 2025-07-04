@@ -18,4 +18,8 @@ in {
   "podman_jellyseerr_env.age".publicKeys = serverKeys;
   "podman_postgresql_env.age".publicKeys = serverKeys;
   "podman_outline_env.age".publicKeys = serverKeys;
+  "podman_wrtag_env.age".publicKeys = serverKeys;
+  "podman_minio_env.age".publicKeys = serverKeys;
+  "podman_quassel_env.age".publicKeys = serverKeys;
+  "podman_pocket-id_env.age".publicKeys = serverKeys;
 }

@@ -34,6 +34,7 @@ in {
     }
   '';
   services.caddy.virtualHosts."vault.lan.${secrets.domain}".extraConfig = ''
+    import private
     reverse_proxy localhost:${externalPort}
   '';
 }
