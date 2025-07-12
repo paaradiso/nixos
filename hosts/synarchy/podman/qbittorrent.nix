@@ -10,7 +10,7 @@
 in {
   virtualisation.quadlet.containers.qbittorrent = {
     containerConfig = {
-      image = "ghcr.io/home-operations/qbittorrent:5.1.1";
+      image = "ghcr.io/home-operations/qbittorrent:rolling";
       user = "101000:101000";
       publishPorts = ["${torrentPort}:${torrentPort}" "${torrentPort}:${torrentPort}/udp" "${externalPort}:${internalPort}"];
       volumes = [
