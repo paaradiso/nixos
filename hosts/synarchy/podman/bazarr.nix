@@ -18,6 +18,9 @@ in {
       ];
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "postgresql.service";
+    };
   };
   services.caddy.virtualHosts."bazarr.lan.${secrets.domain}".extraConfig = ''
     import private

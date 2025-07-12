@@ -25,6 +25,9 @@ in {
       };
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "authelia.service";
+    };
   };
 
   services.caddy.virtualHosts."abs.${secrets.domain}".extraConfig = ''

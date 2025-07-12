@@ -21,6 +21,9 @@ in {
       };
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "postgresql.service";
+    };
   };
   services.caddy.virtualHosts."ldap.${secrets.domain}".extraConfig = ''
     reverse_proxy localhost:${externalPort}

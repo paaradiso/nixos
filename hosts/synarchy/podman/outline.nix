@@ -34,6 +34,9 @@ in {
       environmentFiles = [config.age.secrets.podman_outline_env.path];
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "authelia.service";
+    };
   };
   services.caddy.virtualHosts.${domain}.extraConfig = ''
     reverse_proxy localhost:${externalPort}

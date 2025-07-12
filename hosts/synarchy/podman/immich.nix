@@ -30,6 +30,9 @@ in {
       environmentFiles = [config.age.secrets.podman_immich_env.path];
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "authelia.service";
+    };
   };
   services.caddy.virtualHosts."immich.${secrets.domain}".extraConfig = ''
     reverse_proxy localhost:${externalPort}
