@@ -5,8 +5,8 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILoVuWfkMp3gOTKO0Q8QREy78uzf3V/vhCQh5IT0kLl9 root@phosphene"
   ];
   serverKeys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2P8/nbOzy5vpo8Y2RUMxfkd/6aAd25cceO9qjVWCdx root@synarchy"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMorgVpd+qUc7IuiaMUVHOeJ21Q44Iu1TU+TMkgfeLk9 alpha@synarchy"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA6J5AxikKSEmGM9kEx2LdmaQLGqtOGfmTE3cqfhmSGU root@synarchy"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICkh5tUOVV9ErPoRyB1Ygq00Cg6SNPg8LtffRLAo8tWT alpha@synarchy"
   ];
   allKeys = personalSystemKeys ++ serverKeys;
 in {
