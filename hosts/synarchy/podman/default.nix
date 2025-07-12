@@ -26,7 +26,6 @@
 
     ./authelia.nix
     ./lldap.nix
-    # ./pocket-id.nix
     ./vaultwarden.nix
   ];
 

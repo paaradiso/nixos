@@ -14,8 +14,8 @@ in {
       image = "ghcr.io/imagegenius/immich:latest";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/mnt/data/apps/data/podman/immich/photos:/photos"
-        "/mnt/data/apps/data/podman/immich/config:/config"
+        "/data/apps/data/podman/immich/photos:/photos"
+        "/data/apps/data/podman/immich/config:/config"
       ];
       devices = ["/dev/dri"];
       environments = {

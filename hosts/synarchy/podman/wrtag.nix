@@ -15,12 +15,12 @@ in {
       publishPorts = ["${externalPort}:${internalPort}"];
       user = "101000:101000";
       volumes = [
-        "/mnt/data/apps/data/podman/wrtag:/config"
-        "/mnt/data/media:/data/media"
+        "/data/apps/data/podman/wrtag:/config"
+        "/data/media:/data/media"
       ];
       environments = {
         WRTAG_WEB_LISTEN_ADDR = ":8000";
-        WRTAG_WEB_PUBLIC_URL = "https://wrtag.lan.scutea.com";
+        WRTAG_WEB_PUBLIC_URL = "https://wrtag.lan.${secrets.domain}";
         WRTAG_WEB_DB_PATH = "/config/wrtag.db";
         WRTAG_CONFIG_PATH = "/config/wrtag.cfg";
       };

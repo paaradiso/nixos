@@ -12,7 +12,7 @@ in {
       image = "docker.io/authelia/authelia:latest";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/mnt/data/apps/data/podman/authelia:/config"
+        "/data/apps/data/podman/authelia:/config"
       ];
       environments = {
         PUID = "101000";

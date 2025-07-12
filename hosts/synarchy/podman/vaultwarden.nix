@@ -15,7 +15,7 @@ in {
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/mnt/data/apps/data/podman/vaultwarden:/data"
+        "/data/apps/data/podman/vaultwarden:/data"
       ];
       environments = {
         ROCKET_PORT = internalPort;

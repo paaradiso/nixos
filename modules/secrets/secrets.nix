@@ -21,5 +21,4 @@ in {
   "podman_wrtag_env.age".publicKeys = serverKeys;
   "podman_minio_env.age".publicKeys = serverKeys;
   "podman_quassel_env.age".publicKeys = serverKeys;
-  "podman_pocket-id_env.age".publicKeys = serverKeys;
 }
