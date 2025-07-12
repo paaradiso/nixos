@@ -35,8 +35,6 @@
     nameservers = ["10.1.1.1"];
   };
 
-  services.openssh.permitRootLogin = "yes";
-
   users.users.${user} = {
     uid = 101000;
     group = user;
@@ -51,6 +49,9 @@
         startGid = 200000;
         count = 65536;
       }
+    ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOhMK/272nk75SORGhUiIyVxGkxQAEdl1O/Hl4tZoIkO"
     ];
   };
 
