@@ -25,9 +25,9 @@
   networking = {
     hostName = host;
     hostId = "cacabeef";
-    interfaces.ens18.ipv4.addresses = [
+    interfaces.enp4s0.ipv4.addresses = [
       {
-        address = "10.1.1.40";
+        address = "10.1.1.10";
         prefixLength = 24;
       }
     ];

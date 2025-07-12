@@ -9,10 +9,10 @@
   ...
 }: {
   imports = [
-    (modulesPath + "/profiles/qemu-guest.nix")
+    (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["uhci_hcd" "ehci_pci" "ahci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "mpt3sas" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
@@ -38,14 +38,9 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/A889-FD41";
+    device = "/dev/disk/by-uuid/8A4E-0DF5";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
-  };
-
-  fileSystems."/mnt/data" = {
-    device = "10.1.1.10:/data";
-    fsType = "nfs";
   };
   swapDevices = [];
 
