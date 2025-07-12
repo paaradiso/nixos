@@ -13,9 +13,9 @@ in {
       publishPorts = ["${externalPort}:${internalPort}"];
       user = "101000:101000";
       volumes = [
-        "/mnt/data/apps/data/podman/audiobookshelf/config:/usr/share/audiobookshelf/config"
-        "/mnt/data/apps/data/podman/audiobookshelf/metadata:/usr/share/audiobookshelf/metadata"
-        "/mnt/data/media/library:/data/media/library"
+        "/data/apps/data/podman/audiobookshelf/config:/usr/share/audiobookshelf/config"
+        "/data/apps/data/podman/audiobookshelf/metadata:/usr/share/audiobookshelf/metadata"
+        "/data/media/library:/data/media/library"
       ];
       environments = {
         PORT = internalPort;

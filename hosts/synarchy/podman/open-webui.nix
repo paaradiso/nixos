@@ -12,8 +12,8 @@ in {
       image = "ghcr.io/open-webui/open-webui:ollama";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/mnt/data/apps/data/podman/open-webui:/app/backend/data"
-        "/mnt/data/apps/data/podman/ollama:/root/.ollama"
+        "/data/apps/data/podman/open-webui:/app/backend/data"
+        "/data/apps/data/podman/ollama:/root/.ollama"
       ];
       environments = {
         UID = "101000";

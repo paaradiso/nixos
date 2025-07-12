@@ -3,14 +3,14 @@
   internalPort = "4242";
   externalPort = "4242";
 in {
-  age.secrets.podman_quassel_env.file = ../../../modules/secrets/podman_quassel_env.age;
+  # age.secrets.podman_quassel_env.file = ../../../modules/secrets/podman_quassel_env.age;
 
   virtualisation.quadlet.containers.quassel = {
     containerConfig = {
       image = "docker.io/linuxserver/quassel-core:0.14.0";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/mnt/data/apps/data/podman/quassel:/config"
+        "/data/apps/data/podman/quassel:/config"
       ];
       environments = {
         PUID = "101000";
@@ -27,7 +27,7 @@ in {
         AUTH_LDAP_UID_ATTRIBUTE = "uid";
         # RUN_OPTS = "--config-from-environment";
       };
-      environmentFiles = [config.age.secrets.podman_quassel_env.path];
+      # environmentFiles = [config.age.secrets.podman_quassel_env.path];
       networks = [networks.internal.ref];
     };
   };

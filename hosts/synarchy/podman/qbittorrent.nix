@@ -14,8 +14,8 @@ in {
       user = "101000:101000";
       publishPorts = ["${torrentPort}:${torrentPort}" "${torrentPort}:${torrentPort}/udp" "${externalPort}:${internalPort}"];
       volumes = [
-        "/mnt/data/apps/data/podman/qbittorrent-rootless:/config"
-        "/mnt/data:/data"
+        "/data/apps/data/podman/qbittorrent-rootless:/config"
+        "/data:/data"
       ];
       networks = [networks.internal.ref];
     };

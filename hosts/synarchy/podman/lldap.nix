@@ -12,7 +12,7 @@ in {
       image = "docker.io/lldap/lldap:stable";
       publishPorts = ["3890:3890" "${externalPort}:${internalPort}"];
       volumes = [
-        "/mnt/data/apps/data/podman/lldap:/data"
+        "/data/apps/data/podman/lldap:/data"
       ];
       environments = {
         UID = "101000";

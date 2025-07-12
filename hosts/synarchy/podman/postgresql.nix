@@ -8,7 +8,7 @@ in {
       image = "docker.io/tensorchord/pgvecto-rs:pg16-v0.3.0";
       publishPorts = ["5432:5432"];
       volumes = [
-        "/mnt/data/apps/data/podman/postgresql:/var/lib/postgresql/data"
+        "/data/apps/data/podman/postgresql:/var/lib/postgresql/data"
       ];
       environments = {
         PUID = "101000";

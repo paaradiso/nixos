@@ -15,8 +15,8 @@ in {
       publishPorts = ["${externalPort}:${internalPort}"];
       user = "101000:101000";
       volumes = [
-        "/mnt/data/apps/data/podman/wrtag:/config"
-        "/mnt/data/media:/data/media"
+        "/data/apps/data/podman/wrtag:/config"
+        "/data/media:/data/media"
       ];
       environments = {
         WRTAG_WEB_LISTEN_ADDR = ":8000";

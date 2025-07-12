@@ -9,8 +9,8 @@ in {
       user = "101000:101000";
       publishPorts = ["6379:6379"];
       volumes = [
-        "/mnt/data/apps/data/podman/redis/redis.conf:/etc/redis/redis.conf"
-        "/mnt/data/apps/data/podman/redis/data:/var/lib/redis"
+        "/data/apps/data/podman/redis/redis.conf:/etc/redis/redis.conf"
+        "/data/apps/data/podman/redis/data:/var/lib/redis"
       ];
       environments = {
         REDIS_AOF_ENABLED = "no";
