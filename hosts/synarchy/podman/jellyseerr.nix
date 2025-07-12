@@ -29,6 +29,9 @@ in {
       environmentFiles = [config.age.secrets.podman_jellyseerr_env.path];
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "jellyfin.service postgresql.service";
+    };
   };
   services.caddy.virtualHosts."request.${secrets.domain}".extraConfig = ''
     reverse_proxy localhost:${externalPort}

@@ -26,6 +26,9 @@ in {
       environmentFiles = [config.age.secrets.podman_minio_env.path];
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "lldap.service";
+    };
   };
 
   services.caddy.virtualHosts."minio.${secrets.domain}".extraConfig = ''

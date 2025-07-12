@@ -27,6 +27,9 @@ in {
       ];
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "lldap.service";
+    };
   };
   services.caddy.virtualHosts."stalwart.lan.${secrets.domain}".extraConfig = ''
     import private

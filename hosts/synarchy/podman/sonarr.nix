@@ -18,6 +18,9 @@ in {
       ];
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "bazarr.service prowlarr.service unpackerr.service";
+    };
   };
   services.caddy.virtualHosts."sonarr.lan.${secrets.domain}".extraConfig = ''
     import private

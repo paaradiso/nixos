@@ -30,5 +30,8 @@ in {
       # environmentFiles = [config.age.secrets.podman_quassel_env.path];
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "lldap.service";
+    };
   };
 }

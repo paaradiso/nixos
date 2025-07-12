@@ -22,6 +22,9 @@ in {
       };
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "lldap.service tika.service";
+    };
   };
   services.caddy.virtualHosts."ai.${secrets.domain}".extraConfig = ''
     reverse_proxy localhost:${externalPort}

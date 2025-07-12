@@ -23,6 +23,9 @@ in {
       environmentFiles = [config.age.secrets.podman_vaultwarden_env.path];
       networks = [networks.internal.ref];
     };
+    unitConfig = {
+      After = "postgresql.service";
+    };
   };
 
   services.caddy.virtualHosts."vault.${secrets.domain}".extraConfig = ''
