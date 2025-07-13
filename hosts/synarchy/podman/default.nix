@@ -31,6 +31,7 @@
 
   virtualisation.quadlet = {
     autoUpdate.enable = true;
+    autoEscape = true;
     networks.internal = {
     };
   };
