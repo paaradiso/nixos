@@ -53,6 +53,7 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOhMK/272nk75SORGhUiIyVxGkxQAEdl1O/Hl4tZoIkO"
     ];
+    linger = true;
   };
 
   users.groups.${user}.gid = 101000;
