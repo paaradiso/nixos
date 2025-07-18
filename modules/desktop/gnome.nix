@@ -6,12 +6,14 @@
   ...
 }: {
   services = {
-    xserver.enable = true;
-    displayManager.gdm = {
+    xserver = {
       enable = true;
-      wayland = true;
+      desktopManager.gnome.enable = true;
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
     };
-    desktopManager.gnome.enable = true;
   };
 
   environment.gnome.excludePackages = with pkgs; [
