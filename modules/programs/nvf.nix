@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.nvf = {
     enable = true;
     settings = {
@@ -18,12 +18,16 @@
 
           nix.enable = true;
           java.enable = true;
+
           ts.enable = true;
           svelte.enable = true;
+          css.enable = true;
         };
 
         treesitter = {
-          context.enable = true;
+          grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+            typescript
+          ];
         };
 
         lsp = {
@@ -42,6 +46,7 @@
                 nix = ["alejandra"];
                 javascript = ["prettierd"];
                 typescript = ["prettierd"];
+                css = ["prettierd"];
               };
             };
           };
@@ -118,7 +123,6 @@
           # files.enable = true;
 
           # appearance
-          animate.enable = true;
           notify.enable = true;
           statusline.enable = true;
           tabline.enable = true;
@@ -252,6 +256,15 @@
             silent = true;
             action = "<cmd>ToggleTerm TermExec cmd='sudo nixos-rebuild switch'<CR>";
             desc = "NixOS rebuild switch";
+          }
+          ###
+          # open error window
+          {
+            key = "<Leader>E";
+            mode = "n";
+            silent = true;
+            action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+            desc = "Open floating diagnostic window at cursor";
           }
         ];
       };
