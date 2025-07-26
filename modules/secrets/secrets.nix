@@ -11,13 +11,13 @@ let
   allKeys = personalSystemKeys ++ serverKeys;
 in {
   "git_key.age".publicKeys = allKeys;
-  "caddy_env.age".publicKeys = serverKeys;
-  "podman_vaultwarden_env.age".publicKeys = serverKeys;
-  "podman_redis_env.age".publicKeys = serverKeys;
-  "podman_immich_env.age".publicKeys = serverKeys;
-  "podman_jellyseerr_env.age".publicKeys = serverKeys;
-  "podman_postgresql_env.age".publicKeys = serverKeys;
-  "podman_outline_env.age".publicKeys = serverKeys;
-  "podman_wrtag_env.age".publicKeys = serverKeys;
-  "podman_minio_env.age".publicKeys = serverKeys;
+  "caddy_env.age".publicKeys = allKeys;
+  "podman_vaultwarden_env.age".publicKeys = allKeys;
+  "podman_redis_env.age".publicKeys = allKeys;
+  "podman_immich_env.age".publicKeys = allKeys;
+  "podman_jellyseerr_env.age".publicKeys = allKeys;
+  "podman_postgresql_env.age".publicKeys = allKeys;
+  "podman_outline_env.age".publicKeys = allKeys;
+  "podman_wrtag_env.age".publicKeys = allKeys;
+  "podman_minio_env.age".publicKeys = allKeys;
 }
