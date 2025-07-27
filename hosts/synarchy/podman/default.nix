@@ -27,6 +27,8 @@
     ./authelia.nix
     ./lldap.nix
     ./vaultwarden.nix
+
+    ./backrest.nix
   ];
 
   virtualisation.quadlet = {

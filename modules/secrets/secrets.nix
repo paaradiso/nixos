@@ -20,4 +20,5 @@ in {
   "podman_outline_env.age".publicKeys = allKeys;
   "podman_wrtag_env.age".publicKeys = allKeys;
   "podman_minio_env.age".publicKeys = allKeys;
+  "rclone_b2_config.age".publicKeys = allKeys;
 }
