@@ -3,6 +3,7 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEDy1PeU5A7Y1Wkp+rWUiIsB3ZhNZHqNLiLtgwNLfIEt root@dearth"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINbuKy6SVj5pIgO+oZ3B5pvKS9My2xvLWCTwslBsH5GU alpha@dearth"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILoVuWfkMp3gOTKO0Q8QREy78uzf3V/vhCQh5IT0kLl9 root@phosphene"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAcvUQLTalTdPKsx+qrScX4e03LacSvTn4kLdQYSmUC9 alpha@phosphene"
   ];
   serverKeys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFDwSXaXRFcHekx00ASHWowaWmBb21C1hQz0wUpqu+dM root@synarchy"
