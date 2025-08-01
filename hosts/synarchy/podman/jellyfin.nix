@@ -15,8 +15,8 @@ in {
       addGroups = ["303"];
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/data/apps/data/podman/jellyfin:/config"
-        "/data/media:/data/media"
+        "/mnt/zpr0/apps/jellyfin:/config"
+        "/mnt/zpr0/media:/data/media"
       ];
       devices = ["/dev/dri"];
       shmSize = "32G";

@@ -16,10 +16,11 @@ in {
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/data/apps/data/podman/backrest/data:/data"
-        "/data/apps/data/podman/backrest/config:/config"
-        "/data/apps/data/podman/backrest/cache:/cache"
-        "/data:/userdata"
+        "/mnt/zpr0/apps/backrest/data:/data"
+        "/mnt/zpr0/apps/backrest/config:/config"
+        "/mnt/zpr0/apps/backrest/cache:/cache"
+        "/mnt/zpr0:/userdata"
+        "/mnt/b2:/b2"
       ];
       environments = {
         BACKREST_DATA = "/data";

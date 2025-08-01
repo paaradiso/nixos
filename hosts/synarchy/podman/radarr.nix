@@ -13,8 +13,8 @@ in {
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/data/apps/data/podman/radarr:/config"
-        "/data/media:/data/media"
+        "/mnt/zpr0/apps/radarr:/config"
+        "/mnt/zpr0/media:/data/media"
       ];
       networks = [networks.internal.ref];
     };

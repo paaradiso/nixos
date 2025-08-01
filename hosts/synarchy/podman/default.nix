@@ -29,6 +29,7 @@
     ./vaultwarden.nix
 
     ./backrest.nix
+    ./scrutiny.nix
   ];
 
   virtualisation.quadlet = {

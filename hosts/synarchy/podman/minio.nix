@@ -18,7 +18,7 @@ in {
       publishPorts = ["${apiExternalPort}:${apiInternalPort}" "${consoleExternalPort}:${consoleInternalPort}"];
       # user = "101000:101000";
       volumes = [
-        "/data/apps/data/podman/minio:/data"
+        "/mnt/zpr0/apps/minio:/data"
       ];
       environments = {
         MINIO_ROOT_USER = "admin";

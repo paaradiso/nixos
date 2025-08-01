@@ -10,7 +10,7 @@ in {
       image = "docker.io/linuxserver/quassel-core:0.14.0";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/data/apps/data/podman/quassel:/config"
+        "/mnt/zpr0/apps/quassel:/config"
       ];
       environments = {
         PUID = "101000";

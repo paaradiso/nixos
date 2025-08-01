@@ -6,8 +6,8 @@ in {
       image = "ghcr.io/unpackerr/unpackerr:latest";
       user = "101000:101000";
       volumes = [
-        "/data/apps/data/podman/unpackerr:/config"
-        "/data/media:/data/media"
+        "/mnt/zpr0/apps/unpackerr:/config"
+        "/mnt/zpr0/media:/data/media"
       ];
       environments = {
         TZ = "Australia/Adelaide";

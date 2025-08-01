@@ -13,8 +13,8 @@ in {
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/data/apps/data/podman/sonarr:/config"
-        "/data/media:/data/media"
+        "/mnt/zpr0/apps/sonarr:/config"
+        "/mnt/zpr0/media:/data/media"
       ];
       networks = [networks.internal.ref];
     };

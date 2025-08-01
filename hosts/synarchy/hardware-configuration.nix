@@ -32,6 +32,11 @@
     fsType = "zfs";
   };
 
+  fileSystems."/tmp" = {
+    device = "zroot/system/tmp";
+    fsType = "zfs";
+  };
+
   fileSystems."/home/alpha" = {
     device = "zroot/user/home/alpha";
     fsType = "zfs";

@@ -16,7 +16,7 @@ in {
       image = "docker.io/outlinewiki/outline:latest";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/data/apps/data/podman/outline:/var/lib/outline/data"
+        "/mnt/zpr0/apps/outline:/var/lib/outline/data"
       ];
       environments = {
         URL = "https://${domain}";

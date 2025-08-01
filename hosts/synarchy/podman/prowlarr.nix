@@ -13,7 +13,7 @@ in {
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/data/apps/data/podman/prowlarr:/config"
+        "/mnt/zpr0/apps/prowlarr:/config"
       ];
       networks = [networks.internal.ref];
     };

@@ -23,7 +23,7 @@ in {
         "${imapsExternalPort}:${imapsInternalPort}"
       ];
       volumes = [
-        "/data/apps/data/podman/stalwart:/opt/stalwart"
+        "/mnt/zpr0/apps/stalwart:/opt/stalwart"
       ];
       networks = [networks.internal.ref];
     };

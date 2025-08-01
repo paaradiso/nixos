@@ -15,7 +15,7 @@ in {
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/data/apps/data/podman/jellyseerr:/app/config"
+        "/mnt/zpr0/apps/jellyseerr:/app/config"
       ];
       environments = {
         LOG_LEVEL = "debug";
