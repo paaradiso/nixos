@@ -38,15 +38,16 @@
   # ];
 
   # https://blog.redstone.engineer/posts/nixos-windows-guest-simple-looking-glass-setup-guide/
-  boot.extraModulePackages = [config.boot.kernelPackages.kvmfr];
-  boot.kernelModules = ["kvmfr"];
-  boot.extraModprobeConfig = ''
-    options kvmfr static_size_mb=32
-  '';
-  services.udev.extraRules = ''
-    SUBSYSTEM=="kvmfr", OWNER="${user}", GROUP="kvm", MODE="0660"
-  '';
-  virtualisation.libvirtd.qemu.verbatimConfig = ''
-    cgroup_controllers = [ "cpu", "memory", "blkio", "cpuset", "cpuacct" ]
-  '';
+
+  # boot.extraModulePackages = [config.boot.kernelPackages.kvmfr];
+  # boot.kernelModules = ["kvmfr"];
+  # boot.extraModprobeConfig = ''
+  #   options kvmfr static_size_mb=32
+  # '';
+  # services.udev.extraRules = ''
+  #   SUBSYSTEM=="kvmfr", OWNER="${user}", GROUP="kvm", MODE="0660"
+  # '';
+  # virtualisation.libvirtd.qemu.verbatimConfig = ''
+  #   cgroup_controllers = [ "cpu", "memory", "blkio", "cpuset", "cpuacct" ]
+  # '';
 }

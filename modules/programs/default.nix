@@ -1,5 +1,5 @@
 {
   imports = [
-    ./nvf.nix
+    ./nvf
   ];
 }
