@@ -16,7 +16,7 @@
     ../../modules/core/users.nix
     ../../modules/core/nix.nix
     ../../modules/secrets
-    ../../modules/programs/nvf.nix
+    ../../modules/programs/nvf
     ../../modules/theme
   ];
 
