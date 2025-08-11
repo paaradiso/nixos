@@ -13,7 +13,7 @@
     bitwarden
     zsh
     zoxide
-    bat
+    ripgrep
     eza
     inputs.agenix.packages.${system}.default
     inputs.alejandra.defaultPackage.${system}
