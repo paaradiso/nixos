@@ -7,6 +7,7 @@
     ./sonarr.nix
     ./unpackerr.nix
     ./wrtag.nix
+    ./slskd.nix
 
     ./qbittorrent.nix
 
@@ -29,7 +30,12 @@
     ./vaultwarden.nix
 
     ./backrest.nix
+    ./grafito.nix
     ./scrutiny.nix
+
+    ./monero.nix
+
+    ./amp.nix
   ];
 
   virtualisation.quadlet = {
