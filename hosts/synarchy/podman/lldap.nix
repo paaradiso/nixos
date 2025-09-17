@@ -28,4 +28,7 @@ in {
   services.caddy.virtualHosts."ldap.${secrets.domain}".extraConfig = ''
     reverse_proxy localhost:${externalPort}
   '';
+  services.caddy.virtualHosts."ldap.${secrets.publicDomain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
+  '';
 }

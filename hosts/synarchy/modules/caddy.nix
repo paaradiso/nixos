@@ -76,6 +76,14 @@ with lib; {
             abort
           }
         }
+
+        *.${secrets.publicDomain} {
+          import cloudflare
+
+          handle {
+            abort
+          }
+        }
       '';
 
       virtualHosts = {

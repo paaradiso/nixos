@@ -40,6 +40,9 @@ in {
     import private
     reverse_proxy localhost:${externalPort}
   '';
+  services.caddy.virtualHosts."media.${secrets.publicDomain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
+  '';
 
   hardware.graphics = {
     enable = true;

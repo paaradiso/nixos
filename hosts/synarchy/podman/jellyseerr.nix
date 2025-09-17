@@ -36,4 +36,7 @@ in {
   services.caddy.virtualHosts."request.${secrets.domain}".extraConfig = ''
     reverse_proxy localhost:${externalPort}
   '';
+  services.caddy.virtualHosts."request.${secrets.publicDomain}".extraConfig = ''
+    reverse_proxy localhost:${externalPort}
+  '';
 }
