@@ -8,9 +8,10 @@
 
     ../../modules/system/virtualisation.nix
     ../../modules/audio/easyeffects/flat.nix
-    ../../modules/programs/steam.nix
+    # ../../modules/programs/steam.nix
     ../../modules/programs/cs-toggle-res.nix
     ../../modules/misc/webcam.nix
+    ../../modules/misc/elecom_huge.nix
   ];
 
   boot.initrd.luks.devices = {
@@ -39,7 +40,7 @@
   networking.hostName = host;
   networking.hostId = "fafafafa";
 
-  services.flatpak.packages = ["sh.ppy.osu"];
+  services.flatpak.packages = ["sh.ppy.osu" "com.valvesoftware.Steam" "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"];
   boot.blacklistedKernelModules = ["wacom"];
   hardware.opentabletdriver = {
     enable = true;
@@ -51,6 +52,8 @@
     phoronix-test-suite
     stressapptest
     hpl
+    prismlauncher
+    darktable
   ];
 
   programs.corefreq.enable = true;

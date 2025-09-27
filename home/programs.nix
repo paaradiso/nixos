@@ -78,11 +78,12 @@ in {
 
     nixcord = {
       enable = true;
+      vesktop.enable = true;
       quickCss = builtins.readFile discordStylixCss;
       config = {
         useQuickCss = true;
       };
-      discord.autoscroll.enable = true;
+      vesktop.autoscroll.enable = true;
     };
     nix-index.enable = true;
     nix-index.enableZshIntegration = true;
