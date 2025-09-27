@@ -25,6 +25,8 @@
       ts.enable = true;
       svelte.enable = true;
       css.enable = true;
+
+      clang.enable = true;
     };
 
     formatter = {
