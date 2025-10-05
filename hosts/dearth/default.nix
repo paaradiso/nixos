@@ -12,6 +12,7 @@
     ../../modules/programs/cs-toggle-res.nix
     ../../modules/misc/webcam.nix
     ../../modules/misc/elecom_huge.nix
+    ../../modules/desktop/niri.nix
   ];
 
   boot.initrd.luks.devices = {
