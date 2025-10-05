@@ -14,6 +14,7 @@ in {
   virtualisation.quadlet.containers.outline = {
     containerConfig = {
       image = "docker.io/outlinewiki/outline:latest";
+      autoUpdate = "registry";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/zpr0/apps/outline:/var/lib/outline/data"

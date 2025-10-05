@@ -12,6 +12,7 @@ in {
   virtualisation.quadlet.containers.immich = {
     containerConfig = {
       image = "ghcr.io/imagegenius/immich:latest";
+      autoUpdate = "registry";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/zpr0/apps/immich/photos:/photos"

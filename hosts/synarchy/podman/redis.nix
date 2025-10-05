@@ -6,6 +6,7 @@ in {
   virtualisation.quadlet.containers.redis = {
     containerConfig = {
       image = "docker.io/bitnami/redis:latest";
+      autoUpdate = "registry";
       user = "101000:101000";
       publishPorts = ["6379:6379"];
       volumes = [

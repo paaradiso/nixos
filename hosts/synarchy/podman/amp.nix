@@ -12,6 +12,7 @@ in {
   virtualisation.quadlet.containers.amp = {
     containerConfig = {
       image = "docker.io/mitchtalmadge/amp-dockerized:latest";
+      autoUpdate = "registry";
       publishPorts = ["${externalPort}:${internalPort}" "${mcExternalPort}:${mcInternalPort}"];
       volumes = [
         "/mnt/zpr0/apps/amp:/home/amp/.ampdata"

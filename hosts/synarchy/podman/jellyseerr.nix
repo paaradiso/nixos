@@ -12,6 +12,7 @@ in {
   virtualisation.quadlet.containers.jellyseerr = {
     containerConfig = {
       image = "docker.io/fallenbagel/jellyseerr:latest";
+      autoUpdate = "registry";
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [

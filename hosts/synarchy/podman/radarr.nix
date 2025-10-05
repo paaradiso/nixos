@@ -10,6 +10,7 @@ in {
   virtualisation.quadlet.containers.radarr = {
     containerConfig = {
       image = "ghcr.io/home-operations/radarr:rolling";
+      autoUpdate = "registry";
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [

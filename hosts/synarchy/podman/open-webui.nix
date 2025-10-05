@@ -10,6 +10,7 @@ in {
   virtualisation.quadlet.containers.open-webui = {
     containerConfig = {
       image = "ghcr.io/open-webui/open-webui:ollama";
+      autoUpdate = "registry";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/zpr0/apps/open-webui:/app/backend/data"

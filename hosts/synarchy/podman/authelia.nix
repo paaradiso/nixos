@@ -10,6 +10,7 @@ in {
   virtualisation.quadlet.containers.authelia = {
     containerConfig = {
       image = "docker.io/authelia/authelia:latest";
+      autoUpdate = "registry";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/zpr0/apps/authelia:/config"

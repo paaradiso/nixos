@@ -10,6 +10,7 @@ in {
   virtualisation.quadlet.containers.lldap = {
     containerConfig = {
       image = "docker.io/lldap/lldap:stable";
+      autoUpdate = "registry";
       publishPorts = ["3890:3890" "${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/zpr0/apps/lldap:/data"

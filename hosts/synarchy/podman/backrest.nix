@@ -13,6 +13,7 @@ in {
   virtualisation.quadlet.containers.backrest = {
     containerConfig = {
       image = "docker.io/garethgeorge/backrest:latest";
+      autoUpdate = "registry";
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [

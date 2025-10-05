@@ -10,6 +10,7 @@ in {
   virtualisation.quadlet.containers.scrutiny = {
     containerConfig = {
       image = "ghcr.io/analogj/scrutiny:master-omnibus";
+      autoUpdate = "registry";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
         "/run/udev:/run/udev:ro"
