@@ -5,7 +5,7 @@ in {
 
   virtualisation.quadlet.containers.postgresql = {
     containerConfig = {
-      image = "docker.io/tensorchord/pgvecto-rs:pg16-v0.3.0";
+      image = "docker.io/tensorchord/vchord-postgres:pg17-v0.4.3";
       publishPorts = ["5432:5432"];
       volumes = [
         "/mnt/zpr0/apps/postgresql:/var/lib/postgresql/data"

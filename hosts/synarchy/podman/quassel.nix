@@ -8,6 +8,7 @@ in {
   virtualisation.quadlet.containers.quassel = {
     containerConfig = {
       image = "docker.io/linuxserver/quassel-core:0.14.0";
+      autoUpdate = "registry";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
         "/mnt/zpr0/apps/quassel:/config"

@@ -10,6 +10,7 @@ in {
   virtualisation.quadlet.containers.audiobookshelf = {
     containerConfig = {
       image = "ghcr.io/advplyr/audiobookshelf:latest";
+      autoUpdate = "registry";
       publishPorts = ["${externalPort}:${internalPort}"];
       user = "101000:101000";
       volumes = [

@@ -10,6 +10,7 @@ in {
   virtualisation.quadlet.containers.grafito = {
     containerConfig = {
       image = "ghcr.io/ralsina/grafito:latest";
+      autoUpdate = "registry";
       # user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [

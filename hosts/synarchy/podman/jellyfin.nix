@@ -11,6 +11,7 @@ in {
   virtualisation.quadlet.containers.jellyfin = {
     containerConfig = {
       image = "docker.io/jellyfin/jellyfin:latest";
+      autoUpdate = "registry";
       user = "101000:101000";
       addGroups = ["303"];
       publishPorts = ["${externalPort}:${internalPort}"];

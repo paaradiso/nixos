@@ -10,6 +10,7 @@ in {
   virtualisation.quadlet.containers.sonarr = {
     containerConfig = {
       image = "ghcr.io/home-operations/sonarr:rolling";
+      autoUpdate = "registry";
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [

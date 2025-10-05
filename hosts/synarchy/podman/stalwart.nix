@@ -16,6 +16,7 @@ in {
   virtualisation.quadlet.containers.stalwart = {
     containerConfig = {
       image = "docker.io/stalwartlabs/stalwart:latest";
+      autoUpdate = "registry";
       publishPorts = [
         "${consoleExternalPort}:${consoleInternalPort}"
         "${smtpExternalPort}:${smtpInternalPort}"

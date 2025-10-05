@@ -12,6 +12,7 @@ in {
   virtualisation.quadlet.containers.wrtag = {
     containerConfig = {
       image = "ghcr.io/sentriz/wrtag:latest";
+      autoUpdate = "registry";
       publishPorts = ["${externalPort}:${internalPort}"];
       user = "101000:101000";
       volumes = [

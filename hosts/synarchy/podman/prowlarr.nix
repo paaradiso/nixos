@@ -10,6 +10,7 @@ in {
   virtualisation.quadlet.containers.prowlarr = {
     containerConfig = {
       image = "ghcr.io/home-operations/prowlarr:rolling";
+      autoUpdate = "registry";
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [

@@ -6,6 +6,7 @@ in {
   virtualisation.quadlet.containers.monero = {
     containerConfig = {
       image = "docker.io/cornfeedhobo/monero:latest";
+      autoUpdate = "registry";
       publishPorts = ["${externalPort}:${internalPort}"];
       user = "101000:101000";
       volumes = [

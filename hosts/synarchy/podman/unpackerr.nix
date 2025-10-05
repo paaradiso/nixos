@@ -4,6 +4,7 @@ in {
   virtualisation.quadlet.containers.unpackerr = {
     containerConfig = {
       image = "ghcr.io/unpackerr/unpackerr:latest";
+      autoUpdate = "registry";
       user = "101000:101000";
       volumes = [
         "/mnt/zpr0/apps/unpackerr:/config"

@@ -12,6 +12,7 @@ in {
   virtualisation.quadlet.containers.slskd = {
     containerConfig = {
       image = "docker.io/slskd/slskd:latest";
+      autoUpdate = "registry";
       user = "101000:101000";
       publishPorts = ["${UiExternalPort}:${UiInternalPort}" "${slskdExternalPort}:${slskdInternalPort}"];
       volumes = [
