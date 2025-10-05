@@ -25,6 +25,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixcord.url = "github:KaylorBen/nixcord";
+    niri.url = "github:sodiboo/niri-flake";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,7 +62,7 @@
       ./modules/packages/personal-system.nix
       ./modules/flatpak
       ./modules/programs
-      ./modules/desktop/gnome.nix
+      ./modules/desktop
       nix-flatpak.nixosModules.nix-flatpak
     ];
 
