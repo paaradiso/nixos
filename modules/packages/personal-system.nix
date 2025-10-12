@@ -17,5 +17,6 @@
     kooha
     zotero
     thunderbird
+    jetbrains.datagrip
   ];
 }
