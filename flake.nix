@@ -31,6 +31,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
+    helium.url = "github:FKouhai/helium2nix/main";
   };
   outputs = inputs @ {
     nixpkgs,
