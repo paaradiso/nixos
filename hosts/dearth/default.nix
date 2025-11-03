@@ -55,6 +55,8 @@
     hpl
     prismlauncher
     darktable
+    rpcs3
+    mednafen
   ];
 
   programs.corefreq.enable = true;
