@@ -10,7 +10,7 @@
     ncdu
     git
     lazygit
-    bitwarden
+    bitwarden-desktop
     zsh
     zoxide
     ripgrep

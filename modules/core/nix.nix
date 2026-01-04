@@ -22,5 +22,6 @@
 
   nixpkgs.config.permittedInsecurePackages = [
     "electron-36.9.5"
+    "qtwebengine-5.15.19"
   ];
 }

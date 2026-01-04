@@ -1,6 +1,6 @@
 {user, ...}: {
   services.openssh.enable = true;
-  programs.ssh.startAgent = true;
+  # programs.ssh.startAgent = true;
 
   systemd.user.services.add_git_key = {
     description = "Add Git SSH key to agent";

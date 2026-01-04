@@ -57,7 +57,19 @@
     darktable
     rpcs3
     mednafen
+    (pkgs.writeShellScriptBin "fix-audio" ''
+      echo "Resetting ASMedia USB Controller..."
+      echo "1" | sudo tee /sys/bus/pci/devices/0000:04:00.0/remove
+      sleep 1
+      echo "1" | sudo tee /sys/bus/pci/rescan
+      echo "Done."
+    '')
   ];
+
+  services.udev.extraRules = ''
+    # Disable autosuspend for ASMedia ASM3241 USB Controller to prevent audio output loss
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x1b21", ATTR{device}=="0x3241", ATTR{power/control}="on"
+  '';
 
   programs.corefreq.enable = true;
 

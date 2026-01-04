@@ -5,7 +5,7 @@
 
   environment.systemPackages = with pkgs; [
     corefonts
-    vistafonts
+    vista-fonts
     wl-clipboard
     mission-center
   ];
