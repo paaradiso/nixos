@@ -17,7 +17,7 @@ in {
         "/mnt/zpr0/apps/scrutiny/config:/opt/scrutiny/config"
         "/mnt/zpr0/apps/scrutiny/influxdb:/opt/scrutiny/influxdb"
       ];
-      devices = ["/dev/disk/by-id/wwn-0x5000cca264f77812" "/dev/disk/by-id/wwn-0x5000cca290c7ea87" "/dev/disk/by-id/wwn-0x5000cca2a3cc27c3" "/dev/disk/by-id/wwn-0x5000cca264f75887"];
+      devices = ["/dev/disk/by-id/wwn-0x5000cca264f77812" "/dev/disk/by-id/wwn-0x5000cca290c7ea87" "/dev/disk/by-id/wwn-0x5000cca2a3cc27c3" "/dev/disk/by-id/wwn-0x5000cca290c2d579"];
       addCapabilities = ["SYS_RAWIO"];
       networks = [networks.internal.ref];
     };

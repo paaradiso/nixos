@@ -54,7 +54,7 @@ in {
       intel-media-sdk
       libva-vdpau-driver
       libvdpau-va-gl
-      intel-ocl
+      # intel-ocl
     ];
   };
 }
