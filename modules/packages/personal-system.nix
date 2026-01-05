@@ -11,7 +11,6 @@
     inputs.zen-browser.packages.${system}.default
     inputs.helium.defaultPackage.${system}
     gnome-tweaks
-    jellyfin-media-player
     feishin
     obsidian
     libreoffice-still
