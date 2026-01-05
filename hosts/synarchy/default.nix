@@ -20,6 +20,7 @@
     ../../modules/theme
   ];
 
+  boot.zfs.extraPools = ["zpr0"];
   boot.loader.grub.enable = false;
 
   networking = {

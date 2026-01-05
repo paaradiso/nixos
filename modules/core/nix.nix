@@ -23,5 +23,6 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-36.9.5"
     "qtwebengine-5.15.19"
+    "intel-media-sdk-23.2.2"
   ];
 }

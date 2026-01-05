@@ -17,6 +17,7 @@
     ./audiobookshelf.nix
     ./immich.nix
     ./jellyfin.nix
+    ./navidrome.nix
     ./outline.nix
     ./quassel.nix
     ./stalwart.nix
@@ -30,7 +31,7 @@
     ./vaultwarden.nix
 
     ./backrest.nix
-    ./grafito.nix
+    # ./grafito.nix
     ./scrutiny.nix
 
     ./monero.nix
