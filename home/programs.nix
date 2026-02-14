@@ -35,20 +35,44 @@ in {
     };
     ssh = {
       enable = true;
-      addKeysToAgent = "yes";
+      matchBlocks = {
+        "github.com" = {
+          hostname = "github.com";
+          user = "git";
+          identityFile = "~/.ssh/git_key";
+          extraOptions = {
+            AddKeysToAgent = "yes";
+            UseKeychain =
+              if pkgs.stdenv.isDarwin
+              then "yes"
+              else "no";
+          };
+        };
+        "*" = {
+          extraOptions = {
+            AddKeysToAgent = "yes";
+            UseKeychain =
+              if pkgs.stdenv.isDarwin
+              then "yes"
+              else "no";
+          };
+        };
+      };
     };
-      zsh = {
+    zsh = {
       enable = true;
       enableCompletion = true;
       shellAliases = {
         ls = "eza -la --group";
         cd = "z";
         # Dynamic rebuild alias for Linux vs Mac
-        rb = if pkgs.stdenv.isDarwin 
-             then "sudo darwin-rebuild switch --flake /etc/nix-darwin"
-             else "sudo --preserve-env=SSH_AUTH_SOCK nixos-rebuild switch";
+        rb =
+          if pkgs.stdenv.isDarwin
+          then "sudo darwin-rebuild switch --flake /etc/nix-darwin"
+          else "sudo --preserve-env=SSH_AUTH_SOCK nixos-rebuild switch";
         lg = "lazygit";
-      };initContent = ''
+      };
+      initContent = ''
         autoload -Uz vcs_info
         precmd() {
           vcs_info
