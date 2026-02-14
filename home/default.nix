@@ -1,9 +1,13 @@
-{user, pkgs, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
   programs.home-manager.enable = true;
 
   home.username = user;
-  home.homeDirectory = 
-    if pkgs.stdenv.isDarwin 
+  home.homeDirectory =
+    if pkgs.stdenv.isDarwin
     then "/Users/${user}"
     else "/home/${user}";
 

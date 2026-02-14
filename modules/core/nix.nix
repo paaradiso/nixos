@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -8,14 +12,24 @@
     };
 
     optimise.automatic = true;
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 14d";
-    } // (if pkgs.stdenv.isDarwin then {
-      interval = { Weekday = 0; Hour = 0; Minute = 0; };
-    } else {
-      dates = "weekly";
-    });
+    gc =
+      {
+        automatic = true;
+        options = "--delete-older-than 14d";
+      }
+      // (
+        if pkgs.stdenv.isDarwin
+        then {
+          interval = {
+            Weekday = 0;
+            Hour = 0;
+            Minute = 0;
+          };
+        }
+        else {
+          dates = "weekly";
+        }
+      );
   };
   # system.autoUpgrade = {
   #   enable = true;

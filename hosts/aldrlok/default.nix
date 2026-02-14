@@ -1,5 +1,9 @@
-{ pkgs, user, host, ... }: {
-
+{
+  pkgs,
+  user,
+  host,
+  ...
+}: {
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
@@ -11,6 +15,7 @@
       "raycast"
       "alt-tab"
       "coconutbattery"
+      "vanilla"
     ];
   };
 
@@ -22,7 +27,7 @@
   security.pam.services.sudo_local.touchIdAuth = true;
 
   system.primaryUser = user;
-  
+
   system.defaults = {
     dock.autohide = true;
     finder.AppleShowAllExtensions = true;
