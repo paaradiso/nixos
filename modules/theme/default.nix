@@ -2,6 +2,7 @@
   config,
   pkgs,
   user,
+  lib,
   ...
 }: let
   importYAML = path:
@@ -24,11 +25,11 @@ in {
     polarity = detectedPolarity;
     image = config.lib.stylix.pixel "base00";
     base16Scheme = schemePath;
-    cursor = {
-      package = pkgs.phinger-cursors;
-      name = cursorName;
-      size = 32;
-    };
+    # cursor = lib.mkIf pkgs.stdenv.isLinux {
+    #   package = pkgs.phinger-cursors;
+    #   name = cursorName;
+    #   size = 32;
+    # };
     fonts = {
       monospace = {
         package = pkgs.iosevka-comfy.comfy-motion-fixed;

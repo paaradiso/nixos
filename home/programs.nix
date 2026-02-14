@@ -1,5 +1,6 @@
 # home/programs.nix
 {
+  lib,
   pkgs,
   config,
   ...
@@ -36,16 +37,18 @@ in {
       enable = true;
       addKeysToAgent = "yes";
     };
-    zsh = {
+      zsh = {
       enable = true;
       enableCompletion = true;
       shellAliases = {
         ls = "eza -la --group";
         cd = "z";
-        rb = "sudo nixos-rebuild switch";
+        # Dynamic rebuild alias for Linux vs Mac
+        rb = if pkgs.stdenv.isDarwin 
+             then "sudo darwin-rebuild switch --flake /etc/nix-darwin"
+             else "sudo --preserve-env=SSH_AUTH_SOCK nixos-rebuild switch";
         lg = "lazygit";
-      };
-      initContent = ''
+      };initContent = ''
         autoload -Uz vcs_info
         precmd() {
           vcs_info
@@ -68,6 +71,7 @@ in {
     helix.enable = true;
     ghostty = {
       enable = true;
+      package = pkgs.ghostty-bin;
       enableZshIntegration = true;
       settings = {
         window-padding-x = 12;
@@ -76,7 +80,7 @@ in {
     };
     bat.enable = true;
 
-    nixcord = {
+    nixcord = lib.mkIf pkgs.stdenv.isLinux {
       enable = true;
       vesktop.enable = true;
       quickCss = builtins.readFile discordStylixCss;

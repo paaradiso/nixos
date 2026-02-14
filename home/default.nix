@@ -1,8 +1,11 @@
-{user, ...}: {
+{user, pkgs, ...}: {
   programs.home-manager.enable = true;
 
   home.username = user;
-  home.homeDirectory = "/home/${user}";
+  home.homeDirectory = 
+    if pkgs.stdenv.isDarwin 
+    then "/Users/${user}"
+    else "/home/${user}";
 
   imports = [
     ./programs.nix

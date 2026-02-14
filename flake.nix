@@ -6,16 +6,19 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.darwin.follows = "";
     };
     secrets.url = "git+ssh://git@github.com/paaradiso/nixos-secrets.git?ref=main";
-    nvf-nixpkgs.url = "github:NixOS/nixpkgs/cad22e7d996aea55ecab064e84834289143e44a0";
     nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nvf-nixpkgs";
+      url = "github:notashelf/nvf/main";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     alejandra = {
       url = "github:kamadorueda/alejandra";
@@ -37,6 +40,7 @@
   outputs = inputs @ {
     nixpkgs,
     home-manager,
+    nix-darwin,
     nix-flatpak,
     stylix,
     nixos-hardware,
@@ -50,23 +54,23 @@
     user = "alpha"; ### IF YOU CHANGE THIS, ALSO CHANGE THE ZFS DATASET NAME AND MOUNTPOINT!
 
     commonModules = [
-      ./modules/core
       ./modules/packages
       ./modules/secrets
-      ./modules/services
       ./modules/theme
-      agenix.nixosModules.default
-      nvf.nixosModules.default
-      stylix.nixosModules.stylix
+      ./modules/core/nix.nix
+      ./modules/core/direnv.nix
     ];
 
-    personalSystemCommonModules = [
-      ./modules/packages/personal-system.nix
-      ./modules/flatpak
-      ./modules/programs
-      ./modules/desktop
-      nix-flatpak.nixosModules.nix-flatpak
-    ];
+    nixosModules =
+      [
+        ./modules/core
+        ./modules/services
+        ./modules/desktop
+        agenix.nixosModules.default
+        nvf.nixosModules.default
+        stylix.nixosModules.stylix
+      ]
+      ++ commonModules;
 
     hmSharedModules = [
       nix-index-database.hmModules.nix-index
@@ -106,11 +110,18 @@
               home-manager.backupFileExtension = "backup";
             }
           ]
-          ++ commonModules
-          ++ lib.optionals personalSystem personalSystemCommonModules;
+          ++ nixosModules
+          ++ lib.optionals personalSystem [
+            ./modules/packages/personal-system.nix
+            ./modules/flatpak
+            ./modules/programs
+            ./modules/desktop
+            nix-flatpak.nixosModules.nix-flatpak
+          ];
       };
   in {
     formatter.x86_64-linux = inputs.alejandra.defaultPackage.x86_64-linux;
+    formatter.aarch64-darwin = inputs.alejandra.packages.aarch64-darwin.alejandra-arm64-apple-darwin;
 
     nixosConfigurations.utopia = mkNixosSystem {
       host = "utopia";
@@ -122,6 +133,34 @@
     nixosConfigurations.synarchy = mkNixosSystem {
       host = "synarchy";
       personalSystem = false;
+    };
+
+    darwinConfigurations.aldrlok = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      specialArgs = {
+        inherit inputs user;
+        secrets = inputs.secrets.config;
+        host = "aldrlok";
+      };
+      modules =
+        [
+          ./hosts/aldrlok
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${user} = ./home;
+            home-manager.sharedModules = [inputs.nvf.homeManagerModules.default ./modules/programs/nvf] ++ hmSharedModules ++ hmPersonalSystemSharedModules;
+            home-manager.extraSpecialArgs = {
+              inherit user;
+              secrets = inputs.secrets.config;
+            };
+            home-manager.backupFileExtension = "backup";
+          }
+          agenix.darwinModules.default
+          stylix.darwinModules.stylix
+        ]
+        ++ commonModules;
     };
   };
 }

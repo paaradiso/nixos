@@ -503,6 +503,27 @@
         "type": "github"
       }
     },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1767634391,
+        "narHash": "sha256-owcSz2ICqTSvhBbhPP+1eWzi88e54rRZtfCNE5E/wwg=",
+        "owner": "nix-darwin",
+        "repo": "nix-darwin",
+        "rev": "08585aacc3d6d6c280a02da195fdbd4b9cf083c2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-darwin",
+        "ref": "nix-darwin-25.11",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1767983141,
@@ -734,7 +755,7 @@
         "mnw": "mnw",
         "ndg": "ndg",
         "nixpkgs": [
-          "nvf-nixpkgs"
+          "nixpkgs"
         ],
         "systems": "systems_3"
       },
@@ -748,23 +769,8 @@
       },
       "original": {
         "owner": "notashelf",
+        "ref": "main",
         "repo": "nvf",
-        "type": "github"
-      }
-    },
-    "nvf-nixpkgs": {
-      "locked": {
-        "lastModified": 1767116409,
-        "narHash": "sha256-5vKw92l1GyTnjoLzEagJy5V5mDFck72LiQWZSOnSicw=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "cad22e7d996aea55ecab064e84834289143e44a0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "cad22e7d996aea55ecab064e84834289143e44a0",
         "type": "github"
       }
     },
@@ -790,13 +796,13 @@
         "helium": "helium",
         "home-manager": "home-manager_2",
         "niri": "niri",
+        "nix-darwin": "nix-darwin",
         "nix-flatpak": "nix-flatpak",
         "nix-index-database": "nix-index-database",
         "nixcord": "nixcord",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nvf": "nvf",
-        "nvf-nixpkgs": "nvf-nixpkgs",
         "quadlet-nix": "quadlet-nix",
         "secrets": "secrets",
         "stylix": "stylix",
