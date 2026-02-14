@@ -81,7 +81,17 @@ in {
       vesktop.enable = true;
       quickCss = builtins.readFile discordStylixCss;
       config = {
-        useQuickCss = true;
+        useQuickCss = false;
+      };
+      discord = {
+        enable = true;
+        vencord.enable = false;
+
+        settings = {
+          openasar = {
+            css = builtins.readFile discordStylixCss;
+          };
+        };
       };
       vesktop.autoscroll.enable = true;
     };

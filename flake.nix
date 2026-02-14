@@ -12,9 +12,10 @@
       inputs.darwin.follows = "";
     };
     secrets.url = "git+ssh://git@github.com/paaradiso/nixos-secrets.git?ref=main";
+    nvf-nixpkgs.url = "github:NixOS/nixpkgs/cad22e7d996aea55ecab064e84834289143e44a0";
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nvf-nixpkgs";
     };
     alejandra = {
       url = "github:kamadorueda/alejandra";
