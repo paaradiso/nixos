@@ -8,16 +8,20 @@
     enable = true;
     onActivation.cleanup = "zap";
     casks = [
-      "bitwarden"
       "vesktop"
       "orion"
-      "spotify"
-      "raycast"
       "alt-tab"
-      "coconutbattery"
       "vanilla"
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    raycast
+    maccy
+    spotify
+    coconutbattery
+    bitwarden-desktop
+  ];
 
   networking.hostName = host;
   networking.computerName = host;
