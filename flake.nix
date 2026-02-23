@@ -17,7 +17,7 @@
     };
     secrets.url = "git+ssh://git@github.com/paaradiso/nixos-secrets.git?ref=main";
     nvf = {
-      url = "github:notashelf/nvf/main";
+      url = "github:notashelf/nvf/d5da1a14c3895be269653d47b320697b1d2dafae";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     alejandra = {

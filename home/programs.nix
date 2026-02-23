@@ -42,19 +42,13 @@ in {
           identityFile = "~/.ssh/git_key";
           extraOptions = {
             AddKeysToAgent = "yes";
-            UseKeychain =
-              if pkgs.stdenv.isDarwin
-              then "yes"
-              else "no";
+            UseKeychain = pkgs.lib.mkIf pkgs.stdenv.isDarwin "yes";
           };
         };
         "*" = {
           extraOptions = {
             AddKeysToAgent = "yes";
-            UseKeychain =
-              if pkgs.stdenv.isDarwin
-              then "yes"
-              else "no";
+            UseKeychain = pkgs.lib.mkIf pkgs.stdenv.isDarwin "yes";
           };
         };
       };
@@ -65,7 +59,6 @@ in {
       shellAliases = {
         ls = "eza -la --group";
         cd = "z";
-        # Dynamic rebuild alias for Linux vs Mac
         rb =
           if pkgs.stdenv.isDarwin
           then "sudo darwin-rebuild switch --flake /etc/nix-darwin"
@@ -95,7 +88,10 @@ in {
     helix.enable = true;
     ghostty = {
       enable = true;
-      package = pkgs.ghostty-bin;
+      package =
+        if pkgs.stdenv.isLinux
+        then pkgs.ghostty
+        else pkgs.ghostty-bin;
       enableZshIntegration = true;
       settings = {
         window-padding-x = 12;
@@ -112,7 +108,7 @@ in {
         useQuickCss = false;
       };
       discord = {
-        enable = true;
+        enable = false;
         vencord.enable = false;
 
         settings = {
