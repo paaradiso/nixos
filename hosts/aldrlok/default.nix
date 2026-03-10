@@ -9,9 +9,12 @@
     onActivation.cleanup = "zap";
     casks = [
       "vesktop"
+      "zen"
       "orion"
       "alt-tab"
       "vanilla"
+      "jellyfin-media-player"
+      "sol"
     ];
   };
 
@@ -21,6 +24,7 @@
     spotify
     coconutbattery
     bitwarden-desktop
+    utm
   ];
 
   networking.hostName = host;
