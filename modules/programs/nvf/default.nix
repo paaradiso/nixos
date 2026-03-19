@@ -67,6 +67,12 @@
           };
         };
 
+        git = {
+          gitsigns = {
+            enable = true;
+          };
+        };
+
         mini = {
           # text editing
           ai.enable = true;

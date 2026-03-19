@@ -20,12 +20,15 @@
 
   environment.systemPackages = with pkgs; [
     raycast
-    maccy
+    # maccy <- clipboard manager
     spotify
     coconutbattery
     bitwarden-desktop
     utm
   ];
+
+  # Other programs:
+  # - Droppy
 
   networking.hostName = host;
   networking.computerName = host;

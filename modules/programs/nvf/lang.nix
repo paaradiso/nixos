@@ -42,8 +42,17 @@
             javascript = ["prettierd"];
             typescript = ["prettierd"];
             css = ["prettierd"];
+            c = ["clang-format"];
+            cpp = ["clang-format"];
           };
         };
+      };
+    };
+
+    debugger = {
+      nvim-dap = {
+        enable = true;
+        ui.enable = true;
       };
     };
 
