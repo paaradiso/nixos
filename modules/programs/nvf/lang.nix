@@ -27,6 +27,11 @@
       css.enable = true;
 
       clang.enable = true;
+
+      gleam = {
+        enable = true;
+        lsp.enable = true;
+      };
     };
 
     formatter = {
