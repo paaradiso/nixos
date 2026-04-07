@@ -13,6 +13,7 @@
     ../../modules/misc/webcam.nix
     ../../modules/misc/elecom_huge.nix
     # ../../modules/desktop/niri.nix
+    ../../modules/flatpak/orion.nix
   ];
 
   boot.initrd.luks.devices = {
