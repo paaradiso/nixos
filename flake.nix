@@ -1,13 +1,13 @@
 {
   description = "nixos";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix = {
@@ -17,7 +17,7 @@
     };
     secrets.url = "git+ssh://git@github.com/paaradiso/nixos-secrets.git?ref=main";
     nvf = {
-      url = "github:notashelf/nvf/d5da1a14c3895be269653d47b320697b1d2dafae";
+      url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     alejandra = {
@@ -25,7 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    stylix.url = "github:danth/stylix/release-25.11";
+    stylix.url = "github:danth/stylix";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixcord.url = "github:KaylorBen/nixcord";
