@@ -28,10 +28,7 @@
 
       clang.enable = true;
 
-      gleam = {
-        enable = true;
-        lsp.enable = true;
-      };
+      gleam.enable = true;
     };
 
     formatter = {
@@ -49,6 +46,7 @@
             css = ["prettierd"];
             c = ["clang-format"];
             cpp = ["clang-format"];
+            sql = ["pg_format"];
           };
         };
       };
@@ -61,7 +59,6 @@
       };
     };
 
-    # indent nix files with two spaces
     augroups = [
       {
         name = "setIndent";
