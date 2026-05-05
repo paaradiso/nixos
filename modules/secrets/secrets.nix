@@ -18,7 +18,7 @@ in {
   "podman_vaultwarden_env.age".publicKeys = allKeys;
   "podman_redis_env.age".publicKeys = allKeys;
   "podman_immich_env.age".publicKeys = allKeys;
-  "podman_jellyseerr_env.age".publicKeys = allKeys;
+  "podman_seerr_env.age".publicKeys = allKeys;
   "podman_postgresql_env.age".publicKeys = allKeys;
   "podman_outline_env.age".publicKeys = allKeys;
   "podman_wrtag_env.age".publicKeys = allKeys;

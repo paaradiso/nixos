@@ -4,29 +4,27 @@
   ...
 }: let
   inherit (config.virtualisation.quadlet) networks;
-  internalPort = "9091";
+  internalPort = "3923";
   externalPort = internalPort;
 in {
-  virtualisation.quadlet.containers.authelia = {
+  virtualisation.quadlet.containers.copyparty = {
     containerConfig = {
-      image = "docker.io/authelia/authelia:4.39.16";
+      image = "docker.io/copyparty/ac:latest";
       autoUpdate = "registry";
+      user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/mnt/zpr0/apps/authelia:/config"
+        "/mnt/zpr0/apps/copyparty:/cfg"
+        "/mnt/zpr0/media:/w"
       ];
       environments = {
-        PUID = "101000";
-        PGID = "101000";
+        LD_PRELOAD = "/usr/lib/libmimalloc-secure.so.NOPE";
       };
       networks = [networks.internal.ref];
     };
-    unitConfig = {
-      After = "lldap.service redis.service";
-    };
   };
 
-  services.caddy.virtualHosts."auth.${secrets.domain}".extraConfig = ''
+  services.caddy.virtualHosts."copyparty.${secrets.publicDomain}".extraConfig = ''
     reverse_proxy localhost:${externalPort}
   '';
 }

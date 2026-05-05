@@ -7,16 +7,16 @@
   internalPort = "5055";
   externalPort = internalPort;
 in {
-  age.secrets.podman_jellyseerr_env.file = ../../../modules/secrets/podman_jellyseerr_env.age;
+  age.secrets.podman_seerr_env.file = ../../../modules/secrets/podman_seerr_env.age;
 
-  virtualisation.quadlet.containers.jellyseerr = {
+  virtualisation.quadlet.containers.seerr = {
     containerConfig = {
-      image = "docker.io/fallenbagel/jellyseerr:latest";
+      image = "ghcr.io/seerr-team/seerr:latest";
       autoUpdate = "registry";
       user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/mnt/zpr0/apps/jellyseerr:/app/config"
+        "/mnt/zpr0/apps/seerr:/app/config"
       ];
       environments = {
         LOG_LEVEL = "debug";
@@ -24,10 +24,10 @@ in {
         Port = internalPort;
         DB_TYPE = "postgres";
         DB_HOST = "postgresql";
-        DB_USER = "jellyseerr_user";
-        DB_NAME = "jellyseerr_db";
+        DB_USER = "seerr_user";
+        DB_NAME = "seerr_db";
       };
-      environmentFiles = [config.age.secrets.podman_jellyseerr_env.path];
+      environmentFiles = [config.age.secrets.podman_seerr_env.path];
       networks = [networks.internal.ref];
     };
     unitConfig = {

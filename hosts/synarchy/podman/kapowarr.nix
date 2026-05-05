@@ -4,16 +4,18 @@
   ...
 }: let
   inherit (config.virtualisation.quadlet) networks;
-  internalPort = "9091";
+  internalPort = "5656";
   externalPort = internalPort;
 in {
-  virtualisation.quadlet.containers.authelia = {
+  virtualisation.quadlet.containers.kapowarr = {
     containerConfig = {
-      image = "docker.io/authelia/authelia:4.39.16";
+      image = "docker.io/mrcas/kapowarr:latest";
       autoUpdate = "registry";
+      user = "101000:101000";
       publishPorts = ["${externalPort}:${internalPort}"];
       volumes = [
-        "/mnt/zpr0/apps/authelia:/config"
+        "/mnt/zpr0/apps/kapowarr/db:/app/db"
+        "/mnt/zpr0/media:/data/media"
       ];
       environments = {
         PUID = "101000";
@@ -22,11 +24,11 @@ in {
       networks = [networks.internal.ref];
     };
     unitConfig = {
-      After = "lldap.service redis.service";
+      After = "prowlarr.service";
     };
   };
-
-  services.caddy.virtualHosts."auth.${secrets.domain}".extraConfig = ''
+  services.caddy.virtualHosts."kapowarr.lan.${secrets.domain}".extraConfig = ''
+    import private
     reverse_proxy localhost:${externalPort}
   '';
 }

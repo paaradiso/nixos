@@ -1,13 +1,15 @@
 {
   imports = [
     ./bazarr.nix
-    ./jellyseerr.nix
+    ./seerr.nix
     ./prowlarr.nix
     ./radarr.nix
     ./sonarr.nix
     ./unpackerr.nix
     ./wrtag.nix
     ./slskd.nix
+    ./shelfmark.nix
+    # ./kapowarr.nix
 
     ./qbittorrent.nix
 
@@ -21,6 +23,7 @@
     ./outline.nix
     ./quassel.nix
     ./stalwart.nix
+    ./copyparty.nix
 
     ./minio.nix
     ./postgresql.nix
@@ -32,7 +35,7 @@
 
     ./backrest.nix
     # ./grafito.nix
-    ./scrutiny.nix
+    # ./scrutiny.nix
 
     ./monero.nix
 

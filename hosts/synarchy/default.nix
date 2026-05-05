@@ -60,5 +60,34 @@
 
   users.groups.${user}.gid = 101000;
 
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "${host}";
+        "netbios name" = "${host}";
+        "security" = "user";
+        "map to guest" = "Bad User";
+        "min protocol" = "SMB2";
+      };
+      "music" = {
+        "path" = "/mnt/zpr0/media/library/music";
+        "browseable" = "yes";
+        "read only" = "yes";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "${user}";
+      };
+    };
+  };
+
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
+
   system.stateVersion = "25.05";
 }
