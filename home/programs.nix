@@ -56,6 +56,7 @@ in {
     zsh = {
       enable = true;
       enableCompletion = true;
+      enableAutosuggestions = true;
       shellAliases = {
         ls = "eza -la --group";
         cd = "z";
