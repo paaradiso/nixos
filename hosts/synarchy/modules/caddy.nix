@@ -28,7 +28,7 @@ with lib; {
         plugins = [
           "github.com/caddy-dns/cloudflare@v0.2.2-0.20250506153119-35fb8474f57d"
         ];
-        hash = "sha256-TiG1bEGCxMANYsm7/G+E365fXkeVtfJEhgO54uP+tTI=";
+        hash = "sha256-jKMsdRRe8jmINgxs+IKuALG1DcbTiaKRhQbSFWLO0QQ=";
       };
 
       environmentFile = config.age.secrets.caddy_env.path;

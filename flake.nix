@@ -51,7 +51,7 @@
   }: let
     inherit (nixpkgs) lib;
 
-    user = "alpha"; ### IF YOU CHANGE THIS, ALSO CHANGE THE ZFS DATASET NAME AND MOUNTPOINT!
+    user = "alpha"; # ## IF YOU CHANGE THIS, ALSO CHANGE THE ZFS DATASET NAME AND MOUNTPOINT!
 
     commonModules = [
       ./modules/packages
@@ -65,7 +65,6 @@
       [
         ./modules/core
         ./modules/services
-        ./modules/desktop
         agenix.nixosModules.default
         nvf.nixosModules.default
         stylix.nixosModules.stylix
@@ -88,7 +87,12 @@
       lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit system inputs host user;
+          inherit
+            system
+            inputs
+            host
+            user
+            ;
           secrets = inputs.secrets.config;
         };
         modules =
@@ -102,7 +106,8 @@
                 if personalSystem
                 then ./home
                 else ./hosts + "/${host}/home";
-              home-manager.sharedModules = hmSharedModules ++ lib.optionals personalSystem hmPersonalSystemSharedModules;
+              home-manager.sharedModules =
+                hmSharedModules ++ lib.optionals personalSystem hmPersonalSystemSharedModules;
               home-manager.extraSpecialArgs = {
                 inherit user;
                 secrets = inputs.secrets.config;
@@ -150,7 +155,13 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${user} = ./home;
-            home-manager.sharedModules = [inputs.nvf.homeManagerModules.default ./modules/programs/nvf] ++ hmSharedModules ++ hmPersonalSystemSharedModules;
+            home-manager.sharedModules =
+              [
+                inputs.nvf.homeManagerModules.default
+                ./modules/programs/nvf
+              ]
+              ++ hmSharedModules
+              ++ hmPersonalSystemSharedModules;
             home-manager.extraSpecialArgs = {
               inherit user;
               secrets = inputs.secrets.config;

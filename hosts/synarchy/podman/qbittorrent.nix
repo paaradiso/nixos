@@ -10,10 +10,14 @@
 in {
   virtualisation.quadlet.containers.qbittorrent = {
     containerConfig = {
-      image = "ghcr.io/home-operations/qbittorrent:rolling";
+      image = "ghcr.io/home-operations/qbittorrent:5.1.2";
       autoUpdate = "registry";
       user = "101000:101000";
-      publishPorts = ["${torrentPort}:${torrentPort}" "${torrentPort}:${torrentPort}/udp" "${externalPort}:${internalPort}"];
+      publishPorts = [
+        "${torrentPort}:${torrentPort}"
+        "${torrentPort}:${torrentPort}/udp"
+        "${externalPort}:${internalPort}"
+      ];
       volumes = [
         "/mnt/zpr0/apps/qbittorrent:/config"
         "/mnt/zpr0:/data"

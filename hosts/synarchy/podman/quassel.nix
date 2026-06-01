@@ -31,7 +31,7 @@ in {
       networks = [networks.internal.ref];
     };
     unitConfig = {
-      After = "lldap.service";
+      After = "lldap.service postgresql.service";
     };
   };
 }

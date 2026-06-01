@@ -12,6 +12,7 @@
     # ./kapowarr.nix
 
     ./qbittorrent.nix
+    ./qui.nix
 
     ./open-webui.nix
     ./tika.nix
@@ -40,6 +41,8 @@
     ./monero.nix
 
     ./amp.nix
+
+    ./otterwiki.nix
   ];
 
   virtualisation.quadlet = {
