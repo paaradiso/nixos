@@ -20,7 +20,10 @@ with lib; {
 
   config = {
     age.secrets.caddy_env.file = ../../../modules/secrets/caddy_env.age;
-    networking.firewall.allowedTCPPorts = [80 443];
+    networking.firewall.allowedTCPPorts = [
+      80
+      443
+    ];
 
     services.caddy = {
       enable = true;
@@ -28,7 +31,7 @@ with lib; {
         plugins = [
           "github.com/caddy-dns/cloudflare@v0.2.2-0.20250506153119-35fb8474f57d"
         ];
-        hash = "sha256-jKMsdRRe8jmINgxs+IKuALG1DcbTiaKRhQbSFWLO0QQ=";
+        hash = "sha256-lpcQii6TFw2vhhcY8SuQwnr0tv39ylEPfBN4Lbn9tY8=";
       };
 
       environmentFile = config.age.secrets.caddy_env.path;
