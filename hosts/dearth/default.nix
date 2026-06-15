@@ -42,7 +42,11 @@
   networking.hostName = host;
   networking.hostId = "fafafafa";
 
-  services.flatpak.packages = ["sh.ppy.osu" "com.valvesoftware.Steam" "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"];
+  services.flatpak.packages = [
+    "sh.ppy.osu"
+    "com.valvesoftware.Steam"
+    "com.valvesoftware.Steam.CompatibilityTool.Proton-GE"
+  ];
   boot.blacklistedKernelModules = ["wacom"];
   hardware.opentabletdriver = {
     enable = true;
@@ -56,7 +60,7 @@
     hpl
     prismlauncher
     darktable
-    rpcs3
+    # rpcs3 compilation failing on unstable
     mednafen
     (pkgs.writeShellScriptBin "fix-audio" ''
       echo "Resetting ASMedia USB Controller..."

@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   user,
   ...
@@ -11,7 +9,6 @@
       desktopManager.gnome.enable = true;
       displayManager.gdm = {
         enable = true;
-        wayland = true;
       };
     };
   };
@@ -74,7 +71,9 @@
             "com.spotify.Client.desktop"
           ];
         };
-        "org/gnome/mutter" = {edge-tiling = true;};
+        "org/gnome/mutter" = {
+          edge-tiling = true;
+        };
         "org/gnome/desktop/interface" = {
           show-battery-percentage = true;
           enable-animations = false;
@@ -90,8 +89,12 @@
         "org/gnome/desktop/wm/preferences" = {
           button-layout = "appmenu:minimize,maximize,close";
         };
-        "org/gnome/desktop/peripherals/touchpad" = {natural-scroll = false;};
-        "org/gnome/desktop/peripherals/mouse" = {accel-profile = "flat";};
+        "org/gnome/desktop/peripherals/touchpad" = {
+          natural-scroll = false;
+        };
+        "org/gnome/desktop/peripherals/mouse" = {
+          accel-profile = "flat";
+        };
       };
     };
 

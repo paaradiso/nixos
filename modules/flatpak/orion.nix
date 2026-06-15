@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   services.flatpak.packages = [
     rec {
       appId = "com.kagi.OrionGtk";

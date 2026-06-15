@@ -18,5 +18,6 @@
     zotero
     thunderbird
     jetbrains.datagrip
+    jellyfin-desktop
   ];
 }

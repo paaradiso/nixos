@@ -23,6 +23,7 @@
       css.enable = true;
       clang.enable = true;
       gleam.enable = true;
+      python.enable = true;
     };
     formatter = {
       conform-nvim = {
